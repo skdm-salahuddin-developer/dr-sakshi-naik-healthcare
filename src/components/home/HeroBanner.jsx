@@ -15,9 +15,10 @@ export default function HeroBanner({ onBookAppointment }) {
         <img
           src="/images/banner/g1.png"
           alt={`Mother and Child - ${clinicInfo.clinicName}`}
-          className="w-full h-full object-cover object-[85%_top] sm:object-[82%_center] lg:object-right select-none"
+          className="w-full h-full object-cover object-[78%_center] sm:object-[82%_center] lg:object-right select-none"
         />
-        <div className="absolute inset-0 bg-white/80 sm:bg-white/50 lg:bg-transparent" />
+        {/* Overlay strictly for mobile view readability - completely removed on desktop */}
+        <div className="sm:hidden absolute inset-0 bg-gradient-to-r from-white via-white/65 to-transparent" />
       </div>
 
       {/* Subtle Dot Grid Pattern */}
