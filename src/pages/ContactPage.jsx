@@ -85,7 +85,8 @@ export default function ContactPage({ onNavigateHome }) {
             className="w-full h-full object-cover object-right sm:object-[85%_center] select-none opacity-100"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#EBF1EF] via-[#EBF1EF]/70 to-transparent w-full sm:w-3/5 md:w-1/2 pointer-events-none" />
+          {/* Soft opacity blend strictly on the text area, leaving the rest of the image completely crisp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#EBF1EF] via-[#EBF1EF]/75 to-transparent w-[65%] sm:w-3/5 md:w-1/2 pointer-events-none" />
         </div>
 
         {/* Left Content Container */}

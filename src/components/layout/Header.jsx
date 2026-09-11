@@ -59,19 +59,19 @@ export default function Header({ onBookAppointment, currentPage = 'home', onNavi
               <img
                 src="/images/logo/logo.png"
                 alt={`${clinicInfo.doctorName} Logo`}
-                className="h-16 sm:h-[74px] lg:h-[82px] w-auto object-contain shrink-0 transition-transform duration-200 group-hover:scale-105"
+                className="h-[72px] sm:h-[74px] lg:h-[82px] w-auto object-contain shrink-0 transition-transform duration-200 group-hover:scale-105"
               />
 
               {/* Brand Typography */}
               <div className="flex flex-col justify-center text-left">
                 <span
-                  className="text-base sm:text-lg lg:text-[21px] font-bold text-[#222B40] tracking-tight group-hover:text-[#0B5DA7] transition-colors leading-tight"
+                  className="text-[17.5px] sm:text-lg lg:text-[21px] font-bold text-[#222B40] tracking-tight group-hover:text-[#0B5DA7] transition-colors leading-tight"
                   style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                 >
                   Women’s Healthcare
                 </span>
                 <span
-                  className="text-[11px] sm:text-xs lg:text-[13.5px] font-semibold text-slate-600 group-hover:text-[#E94E9A] transition-colors leading-snug"
+                  className="text-[12.5px] sm:text-xs lg:text-[13.5px] font-semibold text-slate-600 group-hover:text-[#E94E9A] transition-colors leading-snug"
                   style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                 >
                   and Fertility Services

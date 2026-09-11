@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { treatmentsData } from '../data/treatmentsData.js';
 import { clinicInfo } from '../data/clinicInfo.js';
 
@@ -44,6 +45,10 @@ export default function TreatmentDetailPage({
 
   // Interactive FAQ Accordion State
   const [openFaq, setOpenFaq] = useState(0);
+
+  // Mobile drawer & popup modal states
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [mobileFormModalOpen, setMobileFormModalOpen] = useState(false);
 
   // Left Sidebar Appointment Form State
   const [formData, setFormData] = useState({
@@ -92,7 +97,8 @@ export default function TreatmentDetailPage({
             className="w-full h-full object-cover object-right sm:object-[85%_center] select-none opacity-100"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#EBF1EF] via-[#EBF1EF]/70 to-transparent w-full sm:w-3/5 md:w-1/2 pointer-events-none" />
+          {/* Soft opacity blend strictly on the text area, leaving the rest of the image completely crisp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#EBF1EF] via-[#EBF1EF]/75 to-transparent w-[65%] sm:w-3/5 md:w-1/2 pointer-events-none" />
         </div>
 
         {/* Left Content Container */}
@@ -139,7 +145,8 @@ export default function TreatmentDetailPage({
           <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
             
             {/* ================= LEFT SIDEBAR (~32% Width) ================= */}
-            <aside className="w-full lg:w-[32%] shrink-0 space-y-8 text-left">
+            {/* Desktop Only: On laptop/desktop it is shown on the left and stays fixed on one side while scrolling */}
+            <aside className="hidden lg:block lg:w-[32%] shrink-0 space-y-8 text-left sticky top-28 self-start">
               
               {/* CARD 1: Our Clinical Treatments */}
               <div className="bg-white rounded-lg shadow-sm border border-slate-200 border-l-4 border-l-[#0B5DA7] overflow-hidden">
@@ -390,6 +397,23 @@ export default function TreatmentDetailPage({
             {/* ================= RIGHT MAIN CONTENT AREA (~68% Width) ================= */}
             <main className="w-full lg:w-[68%] space-y-8 text-left">
               
+              {/* Mobile View: Treatments Selector Bar */}
+              <div className="lg:hidden mb-3">
+                <button
+                  type="button"
+                  onClick={() => setMobileSidebarOpen(true)}
+                  className="w-full bg-[#0B5DA7] hover:bg-[#094b87] text-white py-2.5 px-4 rounded-xl shadow-xs flex items-center justify-between transition-all active:scale-[0.99] cursor-pointer group"
+                >
+                  <span className="font-bold text-sm text-white tracking-wide" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
+                    Our Treatments Offered
+                  </span>
+                  <span className="bg-[#E94E9A] group-hover:bg-[#d43f88] text-white font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-lg shadow-xs flex items-center gap-1.5 transition-colors">
+                    <span>Next</span>
+                    <span className="text-sm font-bold leading-none">&raquo;</span>
+                  </span>
+                </button>
+              </div>
+
               {/* 1. Large Top Hero Treatment Photograph */}
               <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50 relative group">
                 <img
@@ -503,17 +527,35 @@ export default function TreatmentDetailPage({
               </div>
 
               {/* 5. Book Appointment Action Bar */}
-              <div className="pt-2">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <button
                   type="button"
-                  onClick={onBookAppointment}
-                  className="relative group overflow-hidden bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] tracking-wider uppercase pl-8 pr-10 py-4 rounded-sm shadow-sm transition-all duration-300 hover:shadow-md active:scale-98 flex items-center gap-3 cursor-pointer"
+                  onClick={() => {
+                    if (window.innerWidth < 1024) {
+                      setMobileFormModalOpen(true);
+                    } else if (onBookAppointment) {
+                      onBookAppointment();
+                    }
+                  }}
+                  className="relative group overflow-hidden bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] tracking-wider uppercase pl-8 pr-10 py-4 rounded-sm shadow-sm transition-all duration-300 hover:shadow-md active:scale-98 flex items-center justify-center gap-3 cursor-pointer"
                   style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                 >
                   <span>BOOK APPOINTMENT FOR THIS TREATMENT</span>
                   <span className="text-base leading-none font-black transition-transform duration-200 group-hover:translate-x-1.5">&raquo;</span>
                   {/* Wide 10px Right-side Hover Accent Bar */}
                   <span className="absolute top-0 right-0 bottom-0 w-2.5 bg-[#E94E9A] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                </button>
+
+                {/* Mobile View: Quick button to explore treatments */}
+                <button
+                  type="button"
+                  onClick={() => setMobileSidebarOpen(true)}
+                  className="lg:hidden bg-slate-100 hover:bg-slate-200 text-[#0B5DA7] font-bold text-xs uppercase tracking-wider py-3.5 px-5 rounded-sm border border-slate-200 flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                >
+                  <svg className="w-4 h-4 text-[#0B5DA7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Explore Treatments</span>
                 </button>
               </div>
 
@@ -594,6 +636,261 @@ export default function TreatmentDetailPage({
             </div>
           </div>
         </section>
+      )}
+      {/* ================= FIXED MOBILE RIGHT ACTION TAB ================= */}
+      {/* Fixed on the Right side while scrolling: Portaled to document.body to prevent scroll interference */}
+      {typeof document !== 'undefined' && createPortal(
+        <div className="lg:hidden fixed right-0 top-1/2 -translate-y-1/2 z-[9999]">
+          <button
+            type="button"
+            onClick={() => setMobileFormModalOpen(true)}
+            className="bg-gradient-to-b from-[#E94E9A] to-[#d43f88] hover:from-[#d43f88] hover:to-[#be3177] text-white py-3 px-2 rounded-l-xl shadow-xl flex flex-col items-center gap-1.5 cursor-pointer border-t border-b border-l border-white/40 transition-transform active:scale-95 group select-none"
+            aria-label="Book Appointment"
+          >
+            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0 shadow-inner">
+              <svg className="w-3.5 h-3.5 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <span
+              className="text-[10px] font-bold uppercase tracking-wider text-white [writing-mode:vertical-rl] rotate-180 select-none py-0.5 drop-shadow-xs"
+              style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+            >
+              Book Appointment
+            </span>
+          </button>
+        </div>,
+        document.body
+      )}
+
+      {/* ================= MOBILE TREATMENTS POP UP MODAL ================= */}
+      {/* Simple, compact, and centered without numbers */}
+      {mobileSidebarOpen && typeof document !== 'undefined' && createPortal(
+        <div className="lg:hidden fixed inset-0 z-[10000] flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
+            onClick={() => setMobileSidebarOpen(false)}
+          />
+
+          {/* Pop Up Content Container - Reduced Width & Reduced Height */}
+          <div className="relative w-[90%] max-w-[315px] sm:max-w-[330px] max-h-[58vh] bg-white rounded-2xl shadow-2xl flex flex-col z-10 border border-slate-200 overflow-hidden animate-in zoom-in-95 duration-200">
+            {/* Pop Up Header */}
+            <div className="bg-[#0B5DA7] text-white px-4 py-3 flex items-center justify-between border-b-2 border-[#E94E9A]">
+              <h3 className="font-bold text-sm text-white leading-tight" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
+                Our Treatments Offered
+              </h3>
+              <button
+                type="button"
+                onClick={() => setMobileSidebarOpen(false)}
+                className="text-white/80 hover:text-white w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close treatments pop up"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Treatments List - Compact Rows with reduced vertical spacing */}
+            <div className="flex-1 overflow-y-auto divide-y divide-slate-100 py-1">
+              {treatmentsData.map((item) => {
+                const isActive = item.slug === treatment.slug;
+                return (
+                  <button
+                    key={item.slug}
+                    type="button"
+                    onClick={() => {
+                      setCurrentSlug(item.slug);
+                      setMobileSidebarOpen(false);
+                      if (onNavigateTreatment) {
+                        onNavigateTreatment(item.slug);
+                      }
+                    }}
+                    className={`w-full text-left px-4 py-2.5 flex items-center justify-between transition-all duration-150 text-xs sm:text-[12.5px] cursor-pointer ${
+                      isActive
+                        ? 'bg-[#eaf5fc] text-[#0B5DA7] font-bold border-l-4 border-l-[#0B5DA7]'
+                        : 'text-slate-700 hover:text-[#0B5DA7] hover:bg-[#F9FAFC] font-medium'
+                    }`}
+                    style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+                  >
+                    <span className="truncate pr-2">{item.title}</span>
+                    <span className={`text-sm font-bold shrink-0 ${isActive ? 'text-[#0B5DA7]' : 'text-slate-400'}`}>
+                      &raquo;
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Pop Up Footer */}
+            <div className="px-3 py-2 border-t border-slate-100 bg-[#F9FAFC] flex items-center justify-end">
+              <button
+                type="button"
+                onClick={() => setMobileSidebarOpen(false)}
+                className="text-[11px] font-bold text-slate-500 hover:text-[#0B5DA7] px-3 py-1 rounded transition-colors cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* ================= MOBILE APPOINTMENT POPUP MODAL ================= */}
+      {/* Reduced width and better design */}
+      {mobileFormModalOpen && typeof document !== 'undefined' && createPortal(
+        <div className="lg:hidden fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-4">
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/65 backdrop-blur-sm transition-opacity"
+            onClick={() => setMobileFormModalOpen(false)}
+          />
+
+          {/* Modal Container - Reduced width & polished styling */}
+          <div className="relative w-[88%] max-w-[315px] sm:max-w-[330px] max-h-[82vh] bg-white rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col border border-slate-200 animate-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-[#0B5DA7] to-[#094b87] text-white px-4 py-3 flex items-center justify-between border-b-2 border-[#E94E9A]">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-white/20 flex items-center justify-center shrink-0">
+                  <svg className="w-3.5 h-3.5 text-[#E94E9A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-[13.5px] text-white leading-tight">Book Consultation</h3>
+                  <p className="text-[10px] text-blue-100 font-normal">Dr. Sakshi Naik</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setMobileFormModalOpen(false)}
+                className="text-white/80 hover:text-white w-7 h-7 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close modal"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Form Body */}
+            <div className="p-3.5 overflow-y-auto">
+              {formSubmitted ? (
+                <div className="text-center py-5">
+                  <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-sm font-bold text-[#222B40] mb-1">Enquiry Submitted!</h4>
+                  <p className="text-[11px] text-slate-600 leading-relaxed mb-3">
+                    Thank you, <strong className="text-[#0B5DA7]">{formData.name}</strong>. We will contact you shortly to confirm your appointment for <strong className="text-[#222B40]">{formData.selectedTreatment}</strong>.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormSubmitted(false);
+                      setMobileFormModalOpen(false);
+                    }}
+                    className="w-full bg-[#0B5DA7] text-white py-2 rounded-lg text-xs font-bold uppercase cursor-pointer"
+                  >
+                    Done
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-2 text-left">
+                  <div>
+                    <label className="block text-[10.5px] font-bold text-slate-700 mb-0.5">Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Your Name"
+                      className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10.5px] font-bold text-slate-700 mb-0.5">Phone Number *</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+91 98765 43210"
+                      className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10.5px] font-bold text-slate-700 mb-0.5">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="your.email@example.com"
+                      className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10.5px] font-bold text-slate-700 mb-0.5">Preferred Date</label>
+                    <input
+                      type="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleInputChange}
+                      className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10.5px] font-bold text-slate-700 mb-0.5">Treatment</label>
+                    <select
+                      name="selectedTreatment"
+                      value={formData.selectedTreatment}
+                      onChange={handleInputChange}
+                      className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                    >
+                      {treatmentsData.map((t) => (
+                        <option key={t.slug} value={t.title}>
+                          {t.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-[10.5px] font-bold text-slate-700 mb-0.5">Message (Optional)</label>
+                    <textarea
+                      name="message"
+                      rows="2"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Brief note or query..."
+                      className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs uppercase tracking-wider py-2 rounded-md shadow-sm transition-all mt-1 cursor-pointer"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Submit Request'}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>,
+        document.body
       )}
     </div>
   );

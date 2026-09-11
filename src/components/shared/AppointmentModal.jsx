@@ -33,7 +33,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
       <div 
-        className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-6 sm:p-8 border border-gray-100"
+        className="relative w-full max-w-[360px] sm:max-w-[420px] bg-white rounded-2xl shadow-2xl p-5 sm:p-7 border border-gray-100"
         style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
       >
         <button
