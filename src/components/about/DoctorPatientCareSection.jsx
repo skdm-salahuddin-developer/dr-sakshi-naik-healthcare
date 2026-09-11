@@ -22,8 +22,8 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
         {/* 2-Column Responsive Split */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           
-          {/* Left Column (~55% Width) - Introduction & Approach */}
-          <div className="w-full lg:w-[55%] text-left">
+          {/* Left Column (~54% Width) - Introduction & Approach */}
+          <div className="w-full lg:w-[54%] text-left">
             <span 
               className="block text-[#0B5DA7] font-bold text-lg md:text-xl mb-1.5 tracking-tight"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
@@ -74,8 +74,8 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
             </button>
           </div>
 
-          {/* Right Column (~45% Width) */}
-          <div className="w-full lg:w-[45%] relative max-w-lg mx-auto lg:max-w-none">
+          {/* Right Column (~46% Width) - Full Height with Zero Left/Right Cropping */}
+          <div className="w-full lg:w-[46%] relative max-w-lg mx-auto lg:max-w-none">
             <div 
               className="absolute -top-6 -right-6 w-48 h-48 pointer-events-none opacity-25 bg-repeat -z-10"
               style={{ backgroundImage: "url('/images/about/pattan.png')" }}
@@ -83,9 +83,9 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
 
             <div className="relative rounded-md overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
               <img
-                src="/images/service/treatment-hero-hd.jpg"
+                src="/images/care/details/g3-tall.png"
                 alt="Doctor & Patient Care Consultation"
-                className="w-full h-[380px] sm:h-[440px] lg:h-[480px] object-cover select-none"
+                className="w-full h-[380px] sm:h-[430px] lg:h-[460px] object-cover object-center select-none"
                 loading="lazy"
               />
             </div>
