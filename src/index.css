@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, ::before, ::after {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  p, span, a, button, input, select, textarea, label, li, ul, ol, div {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+/* Custom keyframes for the multi-ring pulsating ripple on play button */
+@keyframes rippleWave {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.ripple-ring-1 {
+  animation: rippleWave 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+}
+
+.ripple-ring-2 {
+  animation: rippleWave 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  animation-delay: 0.7s;
+}
+
+.ripple-ring-3 {
+  animation: rippleWave 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  animation-delay: 1.4s;
+}
+
+/* Smooth Page Arrival Animation */
+@keyframes pageArrival {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-arrival {
+  animation: pageArrival 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* Base Section Arrival on Scroll */
+.section-arrive {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.section-arrive.section-arrived,
+.section-arrive.is-arrived {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Soft & Slow Directional Arrival Animations */
+/* Text Heading from Right Side */
+.arrive-heading-right {
+  opacity: 0;
+  transform: translateX(45px);
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Main Image from Left Side */
+.arrive-image-left {
+  opacity: 0;
+  transform: translateX(-45px);
+  transition: opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Content, Grids, Cards & Subtitles from Bottom Side */
+.arrive-content-bottom {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Staggered Soft Delays */
+.arrive-delay-100 { transition-delay: 0.1s; }
+.arrive-delay-200 { transition-delay: 0.2s; }
+.arrive-delay-300 { transition-delay: 0.3s; }
+.arrive-delay-400 { transition-delay: 0.4s; }
+
+/* Arrived States */
+.arrive-heading-right.is-arrived,
+.arrive-image-left.is-arrived,
+.arrive-content-bottom.is-arrived {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}

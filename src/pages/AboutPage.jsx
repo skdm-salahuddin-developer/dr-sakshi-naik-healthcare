@@ -1,0 +1,39 @@
+import React from 'react';
+import { 
+  AboutBanner, 
+  AboutCareSection, 
+  DoctorPatientCareSection,
+  QualificationsExpertiseSection
+} from '../components/about/index.js';
+import { 
+  AppointmentBookingSection, 
+  DoctorsTeamSection, 
+  PatientTestimonialsSection 
+} from '../components/shared/index.js';
+
+export default function AboutPage({ onNavigateHome, onBookAppointment }) {
+  return (
+    <div className="w-full">
+      {/* 1. Top Breadcrumb Hero Banner */}
+      <AboutBanner onNavigateHome={onNavigateHome} />
+
+      {/* 2. About Doctor & Patient Care Philosophy Section (Welcome To Dr. Sakshi Naik) */}
+      <DoctorPatientCareSection onBookAppointment={onBookAppointment} />
+
+      {/* 3. Qualifications, Expertise & Clinical Experience (Why Choose Our Medical Excellence) */}
+      <QualificationsExpertiseSection onBookAppointment={onBookAppointment} />
+
+      {/* 4. "Our Professionals We Care About You" - 4-Card Service Feature Grid */}
+      <AboutCareSection onBookAppointment={onBookAppointment} />
+
+      {/* 5. Consultation & Appointment Booking Form (Have A Questions? Consult With Dr. Sakshi Naik) */}
+      <AppointmentBookingSection onBookAppointment={onBookAppointment} />
+
+      {/* 7. Medical Doctors Team Showcase */}
+      <DoctorsTeamSection onBookAppointment={onBookAppointment} />
+
+      {/* 8. Patient Stories & Testimonials Slider */}
+      <PatientTestimonialsSection />
+    </div>
+  );
+}
