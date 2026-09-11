@@ -58,9 +58,9 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
   return (
     <section 
       id="appointment" 
-      className="relative py-16 lg:py-24 bg-cover bg-no-repeat bg-[center_right] sm:bg-right overflow-hidden"
+      className="relative py-12 sm:py-16 lg:py-24 bg-cover bg-no-repeat bg-[78%_center] sm:bg-right overflow-hidden"
       style={{
-        backgroundImage: "url('/images/request/bg-01.jpg')",
+        backgroundImage: "url('/images/request/g2.png')",
       }}
     >
       {/* Subtle Dot Pattern */}
@@ -70,15 +70,15 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <div className="max-w-2xl lg:max-w-xl">
+        <div className="w-full max-w-[290px] xs:max-w-[320px] sm:max-w-2xl lg:max-w-xl">
           
           {/* Section Header */}
-          <div className="mb-8 sm:mb-10">
-            <span className="block text-[#0B5DA7] text-xl sm:text-2xl font-bold tracking-tight">
+          <div className="mb-5 sm:mb-10">
+            <span className="block text-[#0B5DA7] text-lg sm:text-2xl font-bold tracking-tight">
               Have A Questions?
             </span>
             <h2 
-              className="text-3xl sm:text-4xl font-bold text-[#222B40] mt-1 tracking-tight"
+              className="text-2xl sm:text-4xl font-bold text-[#222B40] mt-0.5 sm:mt-1 tracking-tight"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
             >
               Consult With <span className="text-[#E94E9A]">{clinicInfo.doctorName}</span>
@@ -87,7 +87,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
 
           {/* Success Toast Banner */}
           {submitted && (
-            <div className="mb-6 p-4 rounded-md bg-[#eef8e5] border border-[#73B737]/30 text-[#222B40] animate-in fade-in flex items-center gap-3">
+            <div className="mb-4 sm:mb-6 p-3.5 sm:p-4 rounded-md bg-[#eef8e5] border border-[#73B737]/30 text-[#222B40] animate-in fade-in flex items-center gap-3">
               <svg className="w-5 h-5 text-[#73B737] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
               </svg>
@@ -99,13 +99,13 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
 
           {/* Error Banner */}
           {errorMessage && (
-            <div className="mb-6 p-3 rounded-md bg-red-50 border border-red-200 text-red-600 text-xs sm:text-sm font-medium animate-in fade-in">
+            <div className="mb-4 sm:mb-6 p-3 rounded-md bg-red-50 border border-red-200 text-red-600 text-xs sm:text-sm font-medium animate-in fade-in">
               {errorMessage}
             </div>
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             
             {/* Row 1: Name & Phone */}
             <div>
@@ -116,7 +116,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 onChange={handleChange}
                 placeholder="Your Name"
                 required
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-[#222B40] placeholder-slate-400 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-[#222B40] placeholder-slate-600 sm:placeholder-slate-400 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all"
               />
             </div>
 
@@ -128,7 +128,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 onChange={handleChange}
                 placeholder="Your Phone"
                 required
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-[#222B40] placeholder-slate-400 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-[#222B40] placeholder-slate-600 sm:placeholder-slate-400 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all"
               />
             </div>
 
@@ -138,7 +138,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-slate-600 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
               >
                 <option value="">Type of Service</option>
                 <option value="Maternity & Delivery Care">Maternity & Delivery Care</option>
@@ -163,7 +163,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                   if (!e.target.value) e.target.type = 'text';
                 }}
                 placeholder="dd/mm/yyyy"
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-slate-600 placeholder-slate-400 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 placeholder-slate-600 sm:placeholder-slate-400 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all"
               />
             </div>
 
@@ -173,7 +173,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 name="fromTime"
                 value={formData.fromTime}
                 onChange={handleChange}
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-slate-600 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
               >
                 <option value="">From</option>
                 <option value="10:00 AM">10:00 AM</option>
@@ -189,7 +189,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 name="toTime"
                 value={formData.toTime}
                 onChange={handleChange}
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-slate-600 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
               >
                 <option value="">To</option>
                 <option value="11:30 AM">11:30 AM</option>
@@ -206,7 +206,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 name="doctor"
                 value={formData.doctor}
                 onChange={handleChange}
-                className="w-full bg-white px-4 py-3.5 rounded-sm text-sm text-slate-600 shadow-sm border border-slate-100 hover:border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
               >
                 <option value="">Staff</option>
                 <option value={`${clinicInfo.doctorName} (Lead Consultant)`}>{clinicInfo.doctorName} (Lead Consultant)</option>
@@ -219,7 +219,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
             <div>
               <button
                 type="submit"
-                className="w-full h-full min-h-[46px] inline-flex items-center justify-center gap-1.5 bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] uppercase tracking-wider px-5 py-3.5 rounded-sm shadow-sm hover:shadow-md active:scale-98 transition-all duration-200 cursor-pointer"
+                className="w-full h-full min-h-[44px] sm:min-h-[46px] inline-flex items-center justify-center gap-1.5 bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] uppercase tracking-wider px-5 py-3 sm:py-3.5 rounded-sm shadow-sm hover:shadow-md active:scale-98 transition-all duration-200 cursor-pointer"
               >
                 <span>CHECK AVAILABILITY</span>
                 <span className="text-sm font-black leading-none">&raquo;</span>
