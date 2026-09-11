@@ -40,7 +40,7 @@ export default function QualificationsExpertiseSection({ onBookAppointment, clas
             />
 
             {/* Rounded Clinical Image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-slate-50">
+            <div className="relative rounded-md overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
               <img
                 src="/images/care/treatment-clinical-hd.jpg"
                 alt="Why Choose Our Medical Excellence - Surgical & Academic Excellence"
@@ -49,9 +49,9 @@ export default function QualificationsExpertiseSection({ onBookAppointment, clas
               />
             </div>
 
-            {/* Floating Experience Card */}
+            {/* Floating Experience Card - Translucent Glassmorphism with Low White Opacity */}
             <div 
-              className="absolute -bottom-6 sm:bottom-6 -right-3 sm:-right-7 bg-white p-4 sm:p-5 rounded-xl shadow-xl flex items-center gap-4 border-l-4 border-[#0B5DA7] border border-slate-100 max-w-xs z-10 animate-in fade-in"
+              className="absolute -bottom-6 sm:bottom-6 -right-3 sm:-right-7 bg-white/55 backdrop-blur-md p-4 sm:p-5 rounded-xl shadow-md flex items-center gap-4 border-l-4 border-[#0B5DA7] border border-white/60 max-w-xs z-10 animate-in fade-in"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
             >
               <div className="w-12 h-12 flex items-center justify-center shrink-0">
@@ -64,9 +64,9 @@ export default function QualificationsExpertiseSection({ onBookAppointment, clas
 
               <div className="text-left">
                 <h3 className="text-2xl font-bold text-[#0B5DA7] tracking-tight leading-none mb-1">
-                  15+ <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Years of</span>
+                  15+ <span className="text-xs font-bold text-black uppercase tracking-wide">Years of</span>
                 </h3>
-                <p className="text-xs text-slate-600 font-medium leading-tight">
+                <p className="text-xs text-black font-semibold leading-tight">
                   Excellence in Surgical Care
                 </p>
               </div>

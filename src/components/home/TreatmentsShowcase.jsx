@@ -106,24 +106,8 @@ export default function TreatmentsShowcase({ onBookAppointment }) {
                   </div>
                 </div>
 
-                {/* Footer Action Bar: Doctor profile snippet + READ MORE button */}
-                <div className="pt-6 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4 mt-auto">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src="/images/01.jpg"
-                      alt="Dr. Sakshi Naik"
-                      className="w-12 h-12 rounded-full object-cover border border-gray-200 shadow-xs"
-                    />
-                    <div>
-                      <h4 className="text-sm font-bold text-[#222B40] leading-tight">
-                        Dr. Sakshi Naik
-                      </h4>
-                      <p className="text-xs text-gray-500 font-medium mt-0.5">
-                        Specialist
-                      </p>
-                    </div>
-                  </div>
-
+                {/* Footer Action Bar: READ MORE button */}
+                <div className="pt-6 border-t border-gray-100 flex items-center justify-start mt-auto">
                   <a
                     href={`#/treatments/${current.slug}`}
                     className="bg-[#0B5DA7] hover:bg-[#094b87] text-white px-7 py-3 rounded-sm font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-sm hover:shadow hover:scale-[1.02] active:scale-98 flex items-center gap-1.5"

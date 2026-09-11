@@ -50,7 +50,7 @@ export default function HealthcareServicesGrid({ onBookAppointment }) {
                 <div className="mt-5 pt-1">
                   <a
                     href={card.linkUrl}
-                    className={`inline-flex items-center gap-1.5 text-xs font-bold ${card.linkColor} uppercase tracking-wider hover:underline transition-colors`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B5DA7] hover:text-[#094b87] uppercase tracking-wider hover:underline transition-colors"
                   >
                     <span>READ MORE</span>
                     <span className="text-sm font-black leading-none">&raquo;</span>
