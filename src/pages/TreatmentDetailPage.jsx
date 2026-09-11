@@ -43,8 +43,6 @@ export default function TreatmentDetailPage({
     window.scrollTo(0, 0);
   }, [currentSlug]);
 
-  // Interactive FAQ Accordion State
-  const [openFaq, setOpenFaq] = useState(0);
 
   // Mobile drawer & popup modal states
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -526,31 +524,12 @@ export default function TreatmentDetailPage({
                 </div>
               </div>
 
-              {/* 5. Book Appointment Action Bar */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (window.innerWidth < 1024) {
-                      setMobileFormModalOpen(true);
-                    } else if (onBookAppointment) {
-                      onBookAppointment();
-                    }
-                  }}
-                  className="relative group overflow-hidden bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] tracking-wider uppercase pl-8 pr-10 py-4 rounded-sm shadow-sm transition-all duration-300 hover:shadow-md active:scale-98 flex items-center justify-center gap-3 cursor-pointer"
-                  style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-                >
-                  <span>BOOK APPOINTMENT FOR THIS TREATMENT</span>
-                  <span className="text-base leading-none font-black transition-transform duration-200 group-hover:translate-x-1.5">&raquo;</span>
-                  {/* Wide 10px Right-side Hover Accent Bar */}
-                  <span className="absolute top-0 right-0 bottom-0 w-2.5 bg-[#E94E9A] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                </button>
-
-                {/* Mobile View: Quick button to explore treatments */}
+              {/* Mobile View: Quick button to explore treatments */}
+              <div className="pt-2 lg:hidden">
                 <button
                   type="button"
                   onClick={() => setMobileSidebarOpen(true)}
-                  className="lg:hidden bg-slate-100 hover:bg-slate-200 text-[#0B5DA7] font-bold text-xs uppercase tracking-wider py-3.5 px-5 rounded-sm border border-slate-200 flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                  className="w-full bg-slate-100 hover:bg-slate-200 text-[#0B5DA7] font-bold text-xs uppercase tracking-wider py-3.5 px-5 rounded-sm border border-slate-200 flex items-center justify-center gap-2 cursor-pointer transition-colors"
                 >
                   <svg className="w-4 h-4 text-[#0B5DA7]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -565,78 +544,6 @@ export default function TreatmentDetailPage({
         </div>
       </section>
 
-      {/* 3. Full-Width Frequently Asked Questions Section */}
-      {treatment.faqs && treatment.faqs.length > 0 && (
-        <section className="py-16 sm:py-20 bg-[#F9FAFC] border-t border-b border-gray-200/60">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span
-                className="block text-[#0B5DA7] font-bold text-xs sm:text-sm uppercase tracking-wider mb-1.5"
-                style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-              >
-                Got Questions? We Have Answers
-              </span>
-              <h2
-                className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#222B40] tracking-tight mb-3"
-                style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-              >
-                Frequently Asked <span className="text-[#E94E9A]">Questions</span>
-              </h2>
-              <div className="w-16 h-1 bg-gradient-to-r from-[#0B5DA7] to-[#E94E9A] mx-auto rounded-full mb-3" />
-              <p
-                className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal"
-                style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-              >
-                Here are simple, helpful answers to common questions our patients ask about {treatment.title}.
-              </p>
-            </div>
-
-            {/* Wide Full-Width Accordion List */}
-            <div className="max-w-4xl mx-auto space-y-3.5">
-              {treatment.faqs.map((faq, idx) => {
-                const isOpen = openFaq === idx;
-                return (
-                  <div
-                    key={idx}
-                    className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs transition-all duration-200"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(isOpen ? -1 : idx)}
-                      className="w-full px-5 sm:px-6 py-4 flex items-center justify-between text-left hover:bg-slate-50 transition-colors cursor-pointer"
-                    >
-                      <span
-                        className="text-sm sm:text-base font-bold text-[#222B40] pr-4 leading-snug"
-                        style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-                      >
-                        {faq.question}
-                      </span>
-                      <span
-                        className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0 transition-all duration-200 ${
-                          isOpen
-                            ? 'bg-[#0B5DA7] text-white rotate-180'
-                            : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                        }`}
-                      >
-                        {isOpen ? '−' : '+'}
-                      </span>
-                    </button>
-
-                    {isOpen && (
-                      <div
-                        className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-[#F9FAFC]/60 animate-in fade-in"
-                        style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
-                      >
-                        {faq.answer}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
       {/* ================= FIXED MOBILE RIGHT ACTION TAB ================= */}
       {/* Fixed on the Right side while scrolling: Portaled to document.body to prevent scroll interference */}
       {typeof document !== 'undefined' && createPortal(

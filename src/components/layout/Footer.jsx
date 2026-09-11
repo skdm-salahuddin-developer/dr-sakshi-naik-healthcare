@@ -164,28 +164,28 @@ export default function Footer() {
       </div>
 
       {/* 3. BOTTOM SUB-FOOTER BAR */}
-      <div className="bg-white py-4 sm:py-5 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10 flex flex-col gap-3.5">
+      <div className="bg-white py-2 sm:py-5 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10 flex flex-col gap-2 sm:gap-3.5">
           
           {/* Logo, Brand Text & Social Links with extended generous spacing */}
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-4 gap-x-10 sm:gap-x-16 lg:gap-x-24 pl-1 sm:pl-3 lg:pl-5">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-y-2 sm:gap-y-4 gap-x-10 sm:gap-x-16 lg:gap-x-24 pl-1 sm:pl-3 lg:pl-5">
             
             {/* Brand Logo with Official Clinic Emblem */}
-            <div className="flex items-center gap-3.5 shrink-0">
+            <div className="flex items-center gap-3 shrink-0">
               <img 
                 src="/images/logo/logo.png" 
                 alt="Women’s Healthcare and Fertility Services Logo"
-                className="h-12 sm:h-14 lg:h-16 w-auto object-contain shrink-0"
+                className="h-10 sm:h-14 lg:h-16 w-auto object-contain shrink-0"
               />
               <div className="flex flex-col justify-center text-left">
                 <span 
-                  className="text-base sm:text-lg lg:text-xl font-bold text-[#222B40] tracking-tight leading-tight"
+                  className="text-sm sm:text-lg lg:text-xl font-bold text-[#222B40] tracking-tight leading-tight"
                   style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                 >
                   Women’s Healthcare
                 </span>
                 <span 
-                  className="text-[11px] sm:text-xs lg:text-[13px] font-semibold text-slate-600 leading-snug"
+                  className="text-[10.5px] sm:text-xs lg:text-[13px] font-semibold text-slate-600 leading-snug"
                   style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
                 >
                   and Fertility Services
@@ -196,15 +196,15 @@ export default function Footer() {
             {/* Subtle Divider between logo/brand and social icons */}
             <div className="hidden lg:block w-px h-9 bg-slate-200" />
 
-            {/* Social Media Icons - Enlarged with clear breathing room */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-600 font-medium">
+            {/* Social Media Icons - Compact height with wide generous gap on mobile */}
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-4 text-xs sm:text-sm text-slate-600 font-medium py-0.5">
               
               {/* Facebook */}
               <a
                 href={clinicInfo.socialLinks.facebook}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 hover:text-[#3b5998] transition-colors group px-1 py-1"
+                className="flex items-center gap-2 hover:text-[#3b5998] transition-colors group p-0.5"
                 aria-label="Facebook"
               >
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#3b5998] text-white flex items-center justify-center font-bold text-xs sm:text-sm group-hover:scale-110 transition-transform shadow-xs">
@@ -220,7 +220,7 @@ export default function Footer() {
                 href={clinicInfo.socialLinks.instagram || "https://instagram.com"}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 hover:text-[#E4405F] transition-colors group px-1 py-1"
+                className="flex items-center gap-2 hover:text-[#E4405F] transition-colors group p-0.5"
                 aria-label="Instagram"
               >
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-xs">
@@ -238,7 +238,7 @@ export default function Footer() {
                 href={clinicInfo.socialLinks.twitter}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 hover:text-[#1da1f2] transition-colors group px-1 py-1"
+                className="flex items-center gap-2 hover:text-[#1da1f2] transition-colors group p-0.5"
                 aria-label="Twitter"
               >
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1da1f2] text-white flex items-center justify-center font-bold text-[11px] sm:text-xs group-hover:scale-110 transition-transform shadow-xs">
@@ -254,7 +254,7 @@ export default function Footer() {
                 href={clinicInfo.socialLinks.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 hover:text-[#0077b5] transition-colors group px-1 py-1"
+                className="flex items-center gap-2 hover:text-[#0077b5] transition-colors group p-0.5"
                 aria-label="LinkedIn"
               >
                 <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0077b5] text-white flex items-center justify-center font-bold text-[11px] sm:text-xs group-hover:scale-110 transition-transform shadow-xs">
@@ -268,7 +268,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright strip with designer credit */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-2 text-center text-xs text-slate-400 pt-2.5 border-t border-slate-100 w-full">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2 text-center text-xs text-slate-400 pt-2 sm:pt-2.5 border-t border-slate-100 w-full">
             <p>
               &copy; {new Date().getFullYear()} {clinicInfo.doctorName} - Women's Healthcare &amp; Fertility Care.
             </p>

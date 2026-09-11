@@ -86,9 +86,9 @@ export default function FaqPage({ onNavigateHome, onBookAppointment }) {
             </p>
           </div>
 
-          {/* FAQ Accordion List */}
+          {/* FAQ Accordion List (Top 6 Essential Questions) */}
           <div className="space-y-3.5">
-            {faqsData.map((faq, idx) => {
+            {faqsData.slice(0, 6).map((faq, idx) => {
               const isOpen = openFaqId === faq.id;
               return (
                 <div
