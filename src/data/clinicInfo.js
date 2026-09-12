@@ -28,7 +28,7 @@ export const clinicInfo = {
   locations: [
     {
       id: 'center-1',
-      title: '1. Goregaon East',
+      title: 'Goregaon East (Mumbai)',
       name: 'Goregaon East (Aakar Apartment)',
       area: 'Goregaon East',
       isMain: true,
@@ -44,7 +44,7 @@ export const clinicInfo = {
     },
     {
       id: 'center-2',
-      title: '2. Goregaon East',
+      title: 'Goregaon East (Mumbai)',
       name: 'Goregaon East (Yashodham)',
       area: 'Goregaon East',
       isMain: false,
@@ -60,7 +60,7 @@ export const clinicInfo = {
     },
     {
       id: 'center-3',
-      title: '3. Goregaon West',
+      title: 'Goregaon West (Mumbai)',
       name: 'Goregaon West (Siddharth Nagar)',
       area: 'Goregaon West',
       isMain: false,

@@ -112,8 +112,8 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7] bg-white font-medium"
               >
                 {clinicInfo.locations.map((loc) => (
-                  <option key={loc.id} value={loc.title}>
-                    {loc.title}
+                  <option key={loc.id} value={loc.name}>
+                    {loc.title} — {loc.addressLine1}
                   </option>
                 ))}
               </select>

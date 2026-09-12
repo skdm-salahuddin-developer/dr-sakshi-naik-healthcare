@@ -142,8 +142,8 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
                 className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer font-medium"
               >
                 {clinicInfo.locations.map((loc) => (
-                  <option key={loc.id} value={loc.title}>
-                    {loc.title}
+                  <option key={loc.id} value={loc.name}>
+                    {loc.title} — {loc.addressLine1}
                   </option>
                 ))}
               </select>
