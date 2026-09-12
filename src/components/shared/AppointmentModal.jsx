@@ -47,13 +47,6 @@ export default function AppointmentModal({ isOpen, onClose }) {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
-        <div className="flex items-center gap-3 mb-2">
-          <span className="w-3 h-3 rounded-full bg-[#E94E9A]" />
-          <span className="text-xs font-bold uppercase tracking-wider text-[#E94E9A]">
-            Quick Consultation
-          </span>
-        </div>
         
         <h3 className="text-2xl font-bold text-[#222B40] mb-2 tracking-tight">
           Book an Appointment
