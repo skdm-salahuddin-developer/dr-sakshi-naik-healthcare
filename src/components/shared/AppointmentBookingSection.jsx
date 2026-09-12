@@ -10,6 +10,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    location: clinicInfo.locations[0].name,
     service: '',
     date: '',
     fromTime: '',
@@ -132,7 +133,22 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
               />
             </div>
 
-            {/* Row 2: Type of Service & Date */}
+            {/* Row 2: Location & Service */}
+            <div>
+              <select
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer font-medium"
+              >
+                {clinicInfo.locations.map((loc) => (
+                  <option key={loc.id} value={loc.title}>
+                    {loc.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div>
               <select
                 name="service"
@@ -152,6 +168,7 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
               </select>
             </div>
 
+            {/* Row 3: Date & Preferred Time Slot */}
             <div>
               <input
                 type="text"
@@ -167,36 +184,19 @@ export default function AppointmentBookingSection({ onBookAppointment }) {
               />
             </div>
 
-            {/* Row 3: From & To Time Slots */}
             <div>
               <select
-                name="fromTime"
-                value={formData.fromTime}
+                name="timeSlot"
+                value={formData.timeSlot || ''}
                 onChange={handleChange}
                 className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
               >
-                <option value="">From</option>
-                <option value="10:00 AM">10:00 AM</option>
-                <option value="11:30 AM">11:30 AM</option>
-                <option value="02:00 PM">02:00 PM</option>
-                <option value="05:00 PM">05:00 PM</option>
-                <option value="06:30 PM">06:30 PM</option>
-              </select>
-            </div>
-
-            <div>
-              <select
-                name="toTime"
-                value={formData.toTime}
-                onChange={handleChange}
-                className="w-full bg-white/60 sm:bg-white backdrop-blur-xs px-3.5 sm:px-4 py-2.5 sm:py-3.5 rounded-sm text-sm text-slate-800 sm:text-slate-600 shadow-xs sm:shadow-sm border border-white/70 sm:border-slate-100 hover:border-white/90 sm:hover:border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#73B737]/60 focus:border-transparent transition-all cursor-pointer"
-              >
-                <option value="">To</option>
-                <option value="11:30 AM">11:30 AM</option>
-                <option value="01:00 PM">01:00 PM</option>
-                <option value="03:30 PM">03:30 PM</option>
-                <option value="06:30 PM">06:30 PM</option>
-                <option value="08:00 PM">08:00 PM</option>
+                <option value="">Preferred Time Slot</option>
+                <option value="10:00 AM - 11:30 AM">10:00 AM – 11:30 AM (Morning)</option>
+                <option value="11:30 AM - 01:00 PM">11:30 AM – 01:00 PM (Noon)</option>
+                <option value="02:00 PM - 03:30 PM">02:00 PM – 03:30 PM (Afternoon)</option>
+                <option value="05:00 PM - 06:30 PM">05:00 PM – 06:30 PM (Evening)</option>
+                <option value="06:30 PM - 08:00 PM">06:30 PM – 08:00 PM (Late Evening)</option>
               </select>
             </div>
 

@@ -23,8 +23,8 @@ export default function QuickContactBar() {
     {
       icon: '/images/icons/placeholder.png',
       subtitle: 'Visit our Location',
-      title: `${clinicInfo.address.line1}, ${clinicInfo.address.city}`,
-      href: 'https://maps.google.com',
+      title: `${clinicInfo.address.line1}, Goregaon East`,
+      href: clinicInfo.locations?.[0]?.directionsUrl || 'https://maps.google.com',
       titleColor: 'text-[#8B5CF6]',
     },
   ];

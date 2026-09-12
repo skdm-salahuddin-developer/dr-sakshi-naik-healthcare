@@ -9,6 +9,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
     name: '',
     phone: '',
     service: 'Maternity Care',
+    location: clinicInfo.locations[0].name,
     preferredDate: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -25,6 +26,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
         name: '',
         phone: '',
         service: 'Maternity Care',
+        location: clinicInfo.locations[0].name,
         preferredDate: '',
       });
     }, 2000);
@@ -98,6 +100,23 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
               />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                Location
+              </label>
+              <select
+                value={formData.location}
+                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7] bg-white font-medium"
+              >
+                {clinicInfo.locations.map((loc) => (
+                  <option key={loc.id} value={loc.title}>
+                    {loc.title}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

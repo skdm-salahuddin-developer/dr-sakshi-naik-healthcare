@@ -79,8 +79,11 @@ export default function Footer() {
               Visit our Location
             </span>
             <h5 className="font-bold text-xs sm:text-sm lg:text-base text-white block mt-0.5 tracking-tight leading-snug">
-              {clinicInfo.clinicName}, Mumbai, MH
+              {clinicInfo.address.line1}, Goregaon East
             </h5>
+            <p className="text-[10px] sm:text-xs text-white/80 truncate">
+              Mumbai, Maharashtra - 400097
+            </p>
           </div>
         </div>
 
@@ -152,11 +155,11 @@ export default function Footer() {
           {/* Column 3: Full-Bleed Interactive Google Map - Reduced height on mobile */}
           <div className="lg:col-span-4 h-44 sm:h-72 lg:h-auto w-full relative min-h-[175px] sm:min-h-[320px] lg:min-h-[360px]">
             <iframe
-              src="https://maps.google.com/maps?q=Mumbai%2C%20Maharashtra&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              src={clinicInfo.mapEmbedUrl}
               className="w-full h-full min-h-[175px] sm:min-h-[320px] lg:min-h-[360px] border-0"
               allowFullScreen
               loading="lazy"
-              title="Clinic Location"
+              title="Main Clinic Location"
             />
           </div>
 

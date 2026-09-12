@@ -18,6 +18,7 @@ export default function ContactPage({ onNavigateHome }) {
     phone: '',
     email: '',
     date: '',
+    selectedLocation: clinicInfo.locations[0].title,
     selectedTreatment: 'Maternity Care',
     message: '',
   });
@@ -43,31 +44,31 @@ export default function ContactPage({ onNavigateHome }) {
     {
       id: 'location',
       icon: '/images/icons/placeholder.png',
-      title: 'Our Clinic Location',
-      detail1: clinicInfo.address.line1,
-      detail2: `${clinicInfo.address.line2}, ${clinicInfo.address.city}, MH`,
+      title: 'Our Location',
+      detail1: `${clinicInfo.address.line1}, Goregaon East`,
+      detail2: 'Mumbai, Maharashtra - 400097',
     },
     {
       id: 'phone',
       icon: '/images/icons/phone-call.png',
-      title: 'Phone & Consultations',
-      detail1: clinicInfo.phones.primary,
+      title: 'Phone',
+      detail1: clinicInfo.phones.formattedPrimary,
       detail2: clinicInfo.email,
-      href: `tel:${clinicInfo.phones.primary.replace(/\s+/g, '')}`,
+      href: `tel:${clinicInfo.phones.primaryRaw}`,
     },
     {
       id: 'emergency',
       icon: '/images/icons/ambulance.png',
-      title: '24/7 Emergency Care',
-      detail1: clinicInfo.phones.emergency,
-      detail2: 'Immediate labour & emergency maternity care',
-      href: `tel:${clinicInfo.phones.emergency.replace(/\s+/g, '')}`,
+      title: '24/7 Emergency Support',
+      detail1: clinicInfo.phones.formattedPrimary,
+      detail2: 'Immediate maternity & care support',
+      href: `tel:${clinicInfo.phones.primaryRaw}`,
       isEmergency: true,
     },
     {
       id: 'timings',
       icon: '/images/icons/staff.png',
-      title: 'Clinic OPD Hours',
+      title: 'Clinic Timings',
       detail1: `${clinicInfo.timings.opdDays}: ${clinicInfo.timings.opdHours}`,
       detail2: `Sunday: ${clinicInfo.timings.sunday}`,
     },
@@ -215,7 +216,7 @@ export default function ContactPage({ onNavigateHome }) {
                     Message Sent Successfully!
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                    Thank you, <strong className="text-[#0B5DA7]">{formData.name}</strong>. Our clinic desk will contact you at <strong className="text-[#222B40]">{formData.phone}</strong> shortly regarding <strong className="text-[#222B40]">{formData.selectedTreatment}</strong>.
+                    Thank you, <strong className="text-[#0B5DA7]">{formData.name}</strong>. Our clinical team will contact you at <strong className="text-[#222B40]">{formData.phone}</strong> shortly regarding <strong className="text-[#222B40]">{formData.selectedTreatment}</strong> at <strong className="text-[#0B5DA7]">{formData.selectedLocation}</strong>.
                   </p>
                   <button
                     type="button"
@@ -226,11 +227,12 @@ export default function ContactPage({ onNavigateHome }) {
                         phone: '',
                         email: '',
                         date: '',
+                        selectedLocation: clinicInfo.locations[0].name,
                         selectedTreatment: 'Maternity Care',
                         message: '',
                       });
                     }}
-                    className="text-xs font-bold text-[#0B5DA7] hover:underline"
+                    className="text-xs font-bold text-[#0B5DA7] hover:underline cursor-pointer"
                   >
                     Send Another Message
                   </button>
@@ -265,7 +267,7 @@ export default function ContactPage({ onNavigateHome }) {
                         required
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+91 98765 43210"
+                        placeholder="091362 34368"
                         className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
                       />
                     </div>
@@ -328,6 +330,25 @@ export default function ContactPage({ onNavigateHome }) {
                     </div>
                   </div>
 
+                  {/* Preferred Location Selector */}
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      Preferred Location
+                    </label>
+                    <select
+                      name="selectedLocation"
+                      value={formData.selectedLocation}
+                      onChange={handleInputChange}
+                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 font-medium"
+                    >
+                      {clinicInfo.locations.map((loc) => (
+                        <option key={loc.id} value={loc.title}>
+                          {loc.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
                   {/* Treatment Selector */}
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">
@@ -337,7 +358,7 @@ export default function ContactPage({ onNavigateHome }) {
                       name="selectedTreatment"
                       value={formData.selectedTreatment}
                       onChange={handleInputChange}
-                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 font-medium"
                     >
                       {treatmentsData.map((t) => (
                         <option key={t.slug} value={t.title}>
@@ -382,14 +403,73 @@ export default function ContactPage({ onNavigateHome }) {
         </div>
       </section>
 
-      {/* 3. Location Mark (Google Map Only) */}
-      <section className="w-full h-80 sm:h-96 lg:h-[450px] relative border-t border-slate-200">
+      {/* 3. Simple Addresses Section (No buttons, no extra badges) */}
+      <section className="py-14 sm:py-16 bg-[#F9FAFC] border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
+            <h2
+              className="text-2xl sm:text-3xl font-bold text-[#222B40] tracking-tight leading-tight mb-2.5"
+              style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+            >
+              Our Clinic <span className="text-[#E94E9A]">Locations</span>
+            </h2>
+            <div className="w-12 h-1 bg-gradient-to-r from-[#0B5DA7] to-[#E94E9A] rounded-full mx-auto mb-3" />
+            <p className="text-xs sm:text-sm text-slate-600 font-normal">
+              Find your nearest clinic location for consultations and appointments.
+            </p>
+          </div>
+
+          {/* 3 Simple Address Cards - Clean, direct, no buttons */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {clinicInfo.locations.map((loc) => (
+              <div
+                key={loc.id}
+                className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between text-left"
+              >
+                <div>
+                  {/* Title: 1. Goregaon East, 2. Goregaon East, 3. Goregaon West */}
+                  <h3
+                    className="text-base sm:text-lg font-bold text-[#0B5DA7] mb-3 pb-2 border-b border-slate-100 tracking-tight"
+                    style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
+                  >
+                    {loc.title}
+                  </h3>
+
+                  {/* Address */}
+                  <div className="text-xs sm:text-[13px] text-slate-700 leading-relaxed mb-4">
+                    <p className="font-semibold text-slate-800">{loc.addressLine1}</p>
+                    <p className="text-slate-600 mt-0.5">{loc.addressLine2}</p>
+                    <p className="text-slate-500 mt-0.5">Mumbai, Maharashtra - {loc.pincode}</p>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="pt-3 border-t border-slate-100 text-xs sm:text-[13px]">
+                  <span className="text-slate-500 font-medium">Phone: </span>
+                  <a
+                    href={`tel:${loc.rawPhone}`}
+                    className="font-bold text-[#222B40] hover:text-[#0B5DA7] transition-colors"
+                  >
+                    {loc.phone}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. Simple Clean Google Map (No buttons or switcher) */}
+      <section className="w-full h-80 sm:h-96 lg:h-[420px] relative border-t border-slate-200">
         <iframe
           src={clinicInfo.mapEmbedUrl}
           className="w-full h-full border-0"
           allowFullScreen
           loading="lazy"
-          title="Dr. Sakshi Naik Clinic Location"
+          title="Clinic Location Map"
         />
       </section>
     </div>

@@ -279,7 +279,7 @@ export default function TreatmentDetailPage({
                           required
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder="+91 98765 43210"
+                          placeholder="091362 34368"
                           className="w-full px-3.5 py-2.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] focus:bg-white text-slate-800"
                         />
                       </div>
@@ -729,7 +729,7 @@ export default function TreatmentDetailPage({
                       required
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="+91 98765 43210"
+                      placeholder="091362 34368"
                       className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFC] border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
                     />
                   </div>
