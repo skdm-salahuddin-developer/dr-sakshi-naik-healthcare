@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { clinicInfo } from '../../data/clinicInfo.js';
 
 /**
@@ -13,6 +13,16 @@ export default function AppointmentModal({ isOpen, onClose }) {
     preferredDate: '',
   });
   const [submitted, setSubmitted] = useState(false);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -33,9 +43,13 @@ export default function AppointmentModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in cursor-pointer"
+    >
       <div 
-        className="relative w-full max-w-[360px] sm:max-w-[420px] bg-white rounded-2xl shadow-2xl p-5 sm:p-7 border border-gray-100"
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-[360px] sm:max-w-[420px] bg-white rounded-2xl shadow-2xl p-5 sm:p-7 border border-gray-100 cursor-default"
         style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
       >
         <button

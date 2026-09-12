@@ -87,8 +87,14 @@ export default function HeroBanner({ onBookAppointment }) {
 
       {/* Video Modal Preview */}
       {videoModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+        <div
+          onClick={() => setVideoModalOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm cursor-pointer"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 cursor-default"
+          >
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-[#F9FAFC]">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-[#F35858]" />
