@@ -34,7 +34,7 @@ export default function HealthcareServicesGrid({ onBookAppointment }) {
           {servicesData.map((card) => (
             <div
               key={card.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col sm:flex-row items-stretch justify-between group"
+              className="bg-white rounded-md shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden border border-slate-100 flex flex-col sm:flex-row items-stretch justify-between group"
             >
               {/* Left Side: Content */}
               <div className="px-6 py-6 sm:px-7 sm:py-7 flex flex-col justify-between flex-1 min-w-0 sm:w-[54%]">

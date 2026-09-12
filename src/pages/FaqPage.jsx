@@ -93,7 +93,7 @@ export default function FaqPage({ onNavigateHome, onBookAppointment }) {
               return (
                 <div
                   key={faq.id}
-                  className={`border rounded-xl overflow-hidden transition-all duration-200 ${
+                  className={`border rounded-md overflow-hidden transition-all duration-200 ${
                     isOpen
                       ? 'border-[#0B5DA7]/40 bg-white shadow-sm ring-1 ring-[#0B5DA7]/10'
                       : 'border-slate-200/80 bg-white hover:border-slate-300 shadow-2xs'
@@ -147,7 +147,7 @@ export default function FaqPage({ onNavigateHome, onBookAppointment }) {
           </div>
 
           {/* 3. Reassuring Consultation Callout Card */}
-          <div className="mt-14 sm:mt-18 bg-gradient-to-r from-[#0B5DA7] to-[#094b87] rounded-2xl p-6 sm:p-10 text-white shadow-md relative overflow-hidden">
+          <div className="mt-14 sm:mt-18 bg-gradient-to-r from-[#0B5DA7] to-[#094b87] rounded-md p-6 sm:p-10 text-white shadow-md relative overflow-hidden">
             {/* Soft background shape accents */}
             <div className="absolute top-0 right-0 -mt-8 -mr-8 w-44 h-44 rounded-full bg-white/5 pointer-events-none" />
             <div className="absolute bottom-0 left-0 -mb-8 -ml-8 w-40 h-40 rounded-full bg-[#E94E9A]/10 pointer-events-none" />

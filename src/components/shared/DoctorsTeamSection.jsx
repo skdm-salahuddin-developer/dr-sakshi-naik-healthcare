@@ -43,7 +43,7 @@ export default function DoctorsTeamSection({ onBookAppointment }) {
           {displayedDoctors.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col sm:flex-row items-stretch justify-between relative group"
+              className="bg-white rounded-md shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col sm:flex-row items-stretch justify-between relative group"
             >
               {/* Geometric Watermark */}
               <svg

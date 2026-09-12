@@ -64,10 +64,10 @@ export default function VisionMissionSection() {
           {principles.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-2xl p-7 sm:p-8 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center group"
+              className="bg-white rounded-md p-7 sm:p-8 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center group"
             >
               {/* Icon Emblem */}
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${item.badgeBg} transition-transform duration-300 group-hover:scale-110`}>
+              <div className={`w-14 h-14 rounded-md flex items-center justify-center mb-5 ${item.badgeBg} transition-transform duration-300 group-hover:scale-110`}>
                 <img
                   src={item.icon}
                   alt={item.title}

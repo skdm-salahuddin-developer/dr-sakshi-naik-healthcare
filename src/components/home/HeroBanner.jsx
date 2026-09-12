@@ -93,7 +93,7 @@ export default function HeroBanner({ onBookAppointment }) {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 cursor-default"
+            className="relative w-full max-w-2xl bg-white rounded-md shadow-2xl overflow-hidden border border-gray-100 cursor-default"
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-[#F9FAFC]">
               <div className="flex items-center gap-2">

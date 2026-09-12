@@ -400,7 +400,7 @@ export default function TreatmentDetailPage({
                 <button
                   type="button"
                   onClick={() => setMobileSidebarOpen(true)}
-                  className="w-full bg-[#0B5DA7] hover:bg-[#094b87] text-white py-2.5 px-4 rounded-xl shadow-xs flex items-center justify-between transition-all active:scale-[0.99] cursor-pointer group"
+                  className="w-full bg-[#0B5DA7] hover:bg-[#094b87] text-white py-2.5 px-4 rounded-md shadow-xs flex items-center justify-between transition-all active:scale-[0.99] cursor-pointer group"
                 >
                   <span className="font-bold text-sm text-white tracking-wide" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
                     Our Treatments Offered
@@ -413,7 +413,7 @@ export default function TreatmentDetailPage({
               </div>
 
               {/* 1. Large Top Hero Treatment Photograph */}
-              <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100 bg-slate-50 relative group">
+              <div className="rounded-md overflow-hidden shadow-sm border border-slate-100 bg-slate-50 relative group">
                 <img
                   src={treatment.image}
                   alt={treatment.title}
@@ -467,7 +467,7 @@ export default function TreatmentDetailPage({
                     return (
                       <div
                         key={idx}
-                        className="p-3.5 sm:p-4 rounded-xl bg-[#F9FAFC] hover:bg-[#F0F6FC] transition-colors border border-slate-100 flex items-center gap-3.5 sm:gap-4"
+                        className="p-3.5 sm:p-4 rounded-md bg-[#F9FAFC] hover:bg-[#F0F6FC] transition-colors border border-slate-100 flex items-center gap-3.5 sm:gap-4"
                       >
                         <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 flex items-center justify-center">
                           <img
@@ -488,7 +488,7 @@ export default function TreatmentDetailPage({
 
               {/* 4. Single Clinical Image Above Benefits */}
               <div className="pt-2">
-                <div className="rounded-xl overflow-hidden shadow-sm border border-slate-100 mb-6 bg-slate-50 relative group">
+                <div className="rounded-md overflow-hidden shadow-sm border border-slate-100 mb-6 bg-slate-50 relative group">
                   <img
                     src={treatment.clinicalImage || '/images/care/details/maternity-care-clinical.jpg'}
                     alt={`${treatment.title} Clinical Consultation`}
@@ -510,7 +510,7 @@ export default function TreatmentDetailPage({
                 >
                   We focus on early detection, gentle treatments, and clear advice so you can feel healthy, confident, and supported at every visit:
                 </p>
-                <div className="bg-[#F9FAFC] rounded-xl p-5 sm:p-6 border border-slate-100">
+                <div className="bg-[#F9FAFC] rounded-md p-5 sm:p-6 border border-slate-100">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     {(treatment.keyBenefits || treatment.bullets).map((b, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-[#222B40]">
@@ -581,7 +581,7 @@ export default function TreatmentDetailPage({
           />
 
           {/* Pop Up Content Container - Reduced Width & Reduced Height */}
-          <div className="relative w-[90%] max-w-[315px] sm:max-w-[330px] max-h-[58vh] bg-white rounded-2xl shadow-2xl flex flex-col z-10 border border-slate-200 overflow-hidden animate-in zoom-in-95 duration-200">
+          <div className="relative w-[90%] max-w-[315px] sm:max-w-[330px] max-h-[58vh] bg-white rounded-md shadow-2xl flex flex-col z-10 border border-slate-200 overflow-hidden animate-in zoom-in-95 duration-200">
             {/* Pop Up Header */}
             <div className="bg-[#0B5DA7] text-white px-4 py-3 flex items-center justify-between border-b-2 border-[#E94E9A]">
               <h3 className="font-bold text-sm text-white leading-tight" style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}>
@@ -656,7 +656,7 @@ export default function TreatmentDetailPage({
           />
 
           {/* Modal Container - Reduced width & polished styling */}
-          <div className="relative w-[88%] max-w-[315px] sm:max-w-[330px] max-h-[82vh] bg-white rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col border border-slate-200 animate-in zoom-in-95 duration-200">
+          <div className="relative w-[88%] max-w-[315px] sm:max-w-[330px] max-h-[82vh] bg-white rounded-md shadow-2xl overflow-hidden z-10 flex flex-col border border-slate-200 animate-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-[#0B5DA7] to-[#094b87] text-white px-4 py-3 flex items-center justify-between border-b-2 border-[#E94E9A]">
               <div className="flex items-center gap-2">

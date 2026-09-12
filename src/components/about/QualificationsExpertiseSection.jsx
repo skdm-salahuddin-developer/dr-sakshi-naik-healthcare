@@ -51,7 +51,7 @@ export default function QualificationsExpertiseSection({ onBookAppointment, clas
 
             {/* Floating Experience Card - Translucent Glassmorphism with Low White Opacity */}
             <div 
-              className="absolute -bottom-6 sm:bottom-6 -right-3 sm:-right-7 bg-white/55 backdrop-blur-md p-4 sm:p-5 rounded-xl shadow-md flex items-center gap-4 border-l-4 border-[#0B5DA7] border border-white/60 max-w-xs z-10 animate-in fade-in"
+              className="absolute -bottom-6 sm:bottom-6 -right-3 sm:-right-7 bg-white/55 backdrop-blur-md p-4 sm:p-5 rounded-md shadow-md flex items-center gap-4 border-l-4 border-[#0B5DA7] border border-white/60 max-w-xs z-10 animate-in fade-in"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
             >
               <div className="w-12 h-12 flex items-center justify-center shrink-0">

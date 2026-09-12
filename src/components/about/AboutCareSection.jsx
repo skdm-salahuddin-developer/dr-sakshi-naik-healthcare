@@ -36,7 +36,7 @@ export default function AboutCareSection({ onBookAppointment }) {
           {careFeaturesData.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl p-8 text-center shadow-sm hover:shadow-md transition duration-300 border border-slate-100 flex flex-col items-center justify-between group hover:-translate-y-1 min-h-[310px]"
+              className="bg-white rounded-md p-8 text-center shadow-sm hover:shadow-md transition duration-300 border border-slate-100 flex flex-col items-center justify-between group hover:-translate-y-1 min-h-[310px]"
             >
               {/* Icon Container */}
               <div className="w-16 h-16 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">

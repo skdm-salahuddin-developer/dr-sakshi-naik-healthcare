@@ -111,7 +111,7 @@ export default function BlogNewsSection() {
                   key={item.id}
                   className="w-full md:w-1/2 shrink-0 px-1.5 sm:px-2"
                 >
-                  <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col h-full group">
+                  <div className="bg-white rounded-md shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col h-full group">
                     
                     {/* Top Banner Thumbnail Image */}
                     <div className="relative overflow-hidden h-56 sm:h-64 w-full bg-slate-100">

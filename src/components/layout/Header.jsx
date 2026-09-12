@@ -145,7 +145,7 @@ export default function Header({ onBookAppointment, currentPage = 'home', onNavi
                 }`}
                 style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
               >
-                <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-3">
+                <div className="bg-white rounded-md shadow-2xl border border-gray-200 p-3">
                   <div className="grid grid-cols-2 gap-3">
                     
                     {/* Left Column (Treatments 1 to 6) */}
@@ -246,7 +246,7 @@ export default function Header({ onBookAppointment, currentPage = 'home', onNavi
               </button>
 
               {searchOpen && (
-                <div className="absolute right-0 mt-3 w-72 bg-white rounded-xl shadow-xl border border-gray-100 p-2 z-50">
+                <div className="absolute right-0 mt-3 w-72 bg-white rounded-md shadow-xl border border-gray-100 p-2 z-50">
                   <div className="relative flex items-center">
                     <input
                       type="text"

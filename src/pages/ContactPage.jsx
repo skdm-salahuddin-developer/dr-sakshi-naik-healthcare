@@ -150,7 +150,7 @@ export default function ContactPage({ onNavigateHome }) {
                 {contactDetails.map((item) => (
                   <div
                     key={item.id}
-                    className={`p-4 rounded-xl bg-[#F9FAFC] border transition-colors flex items-center gap-4 ${
+                    className={`p-4 rounded-md bg-[#F9FAFC] border transition-colors flex items-center gap-4 ${
                       item.isEmergency
                         ? 'border-[#E94E9A]/40 bg-[#fdf2f7]/50'
                         : 'border-slate-100 hover:border-[#0B5DA7]/30'
@@ -426,7 +426,7 @@ export default function ContactPage({ onNavigateHome }) {
             {clinicInfo.locations.map((loc) => (
               <div
                 key={loc.id}
-                className="bg-white rounded-xl p-6 border border-slate-200 shadow-xs flex flex-col justify-between text-left"
+                className="bg-white rounded-md p-6 border border-slate-200 shadow-xs flex flex-col justify-between text-left"
               >
                 <div>
                   {/* Title: 1. Goregaon East, 2. Goregaon East, 3. Goregaon West */}
