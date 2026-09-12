@@ -49,7 +49,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
     >
       <div 
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-[360px] sm:max-w-[420px] bg-white rounded-2xl shadow-2xl p-5 sm:p-7 border border-gray-100 cursor-default"
+        className="relative w-full max-w-[360px] sm:max-w-[420px] bg-white rounded-md shadow-2xl p-5 sm:p-7 border border-gray-100 cursor-default"
         style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
       >
         <button
@@ -91,7 +91,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 placeholder="Enter patient name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
+                className="w-full px-4 py-2.5 rounded-md border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
               />
             </div>
 
@@ -105,7 +105,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 placeholder="Enter 10-digit mobile number"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
+                className="w-full px-4 py-2.5 rounded-md border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
               />
             </div>
 
@@ -116,7 +116,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
               <select
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7] bg-white font-medium"
+                className="w-full px-3 py-2.5 rounded-md border border-gray-200 text-xs sm:text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7] bg-white font-medium"
               >
                 {clinicInfo.locations.map((loc) => (
                   <option key={loc.id} value={loc.name}>
@@ -134,7 +134,7 @@ export default function AppointmentModal({ isOpen, onClose }) {
                 <select
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7] bg-white"
+                  className="w-full px-3 py-2.5 rounded-md border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7] bg-white"
                 >
                   <option value="Maternity Care">Maternity Care</option>
                   <option value="High-Risk Pregnancy">High-Risk Pregnancy</option>
@@ -153,14 +153,14 @@ export default function AppointmentModal({ isOpen, onClose }) {
                   required
                   value={formData.preferredDate}
                   onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
+                  className="w-full px-3 py-2 rounded-md border border-gray-200 text-sm focus:outline-none focus:border-[#0B5DA7] focus:ring-1 focus:ring-[#0B5DA7]"
                 />
               </div>
             </div>
 
             <button
               type="submit"
-              className="w-full mt-2 bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold py-3.5 rounded-xl text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+              className="w-full mt-2 bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold py-3.5 rounded-md text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
             >
               Confirm Consultation Request
             </button>

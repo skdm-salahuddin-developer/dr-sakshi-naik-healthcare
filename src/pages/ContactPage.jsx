@@ -194,7 +194,7 @@ export default function ContactPage({ onNavigateHome }) {
             </div>
 
             {/* RIGHT: Simple Contact Form */}
-            <div className="w-full lg:w-[58%] text-left bg-[#F9FAFC] p-6 sm:p-8 lg:p-10 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div className="w-full lg:w-[58%] text-left bg-[#F9FAFC] p-6 sm:p-8 lg:p-10 rounded-md border border-slate-200/80 shadow-xs">
               <h3
                 className="text-xl sm:text-2xl font-bold text-[#222B40] tracking-tight mb-2"
                 style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
@@ -206,7 +206,7 @@ export default function ContactPage({ onNavigateHome }) {
               </p>
 
               {formSubmitted ? (
-                <div className="p-8 rounded-xl bg-white border border-emerald-200 text-center animate-in fade-in">
+                <div className="p-8 rounded-md bg-white border border-emerald-200 text-center animate-in fade-in">
                   <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
@@ -252,7 +252,7 @@ export default function ContactPage({ onNavigateHome }) {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your Name"
-                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800"
                       />
                     </div>
 
@@ -268,7 +268,7 @@ export default function ContactPage({ onNavigateHome }) {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="091362 34368"
-                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800"
                       />
                     </div>
                   </div>
@@ -285,7 +285,7 @@ export default function ContactPage({ onNavigateHome }) {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800"
+                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800"
                       />
                     </div>
 
@@ -313,7 +313,7 @@ export default function ContactPage({ onNavigateHome }) {
                               e.target.showPicker();
                             } catch (_) {}
                           }}
-                          className="w-full pl-3.5 pr-10 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 cursor-pointer font-medium [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                          className="w-full pl-3.5 pr-10 py-2.5 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800 cursor-pointer font-medium [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                         />
                         <div className="absolute right-3 text-[#0B5DA7] group-hover:text-[#E94E9A] transition-colors pointer-events-none">
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -339,7 +339,7 @@ export default function ContactPage({ onNavigateHome }) {
                       name="selectedLocation"
                       value={formData.selectedLocation}
                       onChange={handleInputChange}
-                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 font-medium"
+                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800 font-medium"
                     >
                       {clinicInfo.locations.map((loc) => (
                         <option key={loc.id} value={loc.name}>
@@ -358,7 +358,7 @@ export default function ContactPage({ onNavigateHome }) {
                       name="selectedTreatment"
                       value={formData.selectedTreatment}
                       onChange={handleInputChange}
-                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 font-medium"
+                      className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800 font-medium"
                     >
                       {treatmentsData.map((t) => (
                         <option key={t.slug} value={t.title}>
@@ -379,7 +379,7 @@ export default function ContactPage({ onNavigateHome }) {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Any specific questions, symptoms, or timing preferences..."
-                      className="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-md focus:outline-none focus:border-[#0B5DA7] text-slate-800 resize-none"
+                      className="w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-sm focus:outline-none focus:border-[#0B5DA7] text-slate-800 resize-none"
                     />
                   </div>
 
