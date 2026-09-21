@@ -276,7 +276,7 @@ export default function Footer() {
               &copy; {new Date().getFullYear()} {clinicInfo.doctorName} - Women's Healthcare &amp; Fertility Care.
             </p>
             <p className="text-slate-500 font-medium text-[11px] sm:text-xs">
-              Designed by <span className="font-semibold text-[#0B5DA7]">Shree Krishna Digital Marketing</span>
+              Designed &amp; Developed by <span className="font-semibold text-[#0B5DA7]">Shree Krishna Digital Marketing</span>
             </p>
           </div>
 

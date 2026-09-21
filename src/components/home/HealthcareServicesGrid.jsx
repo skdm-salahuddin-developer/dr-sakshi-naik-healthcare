@@ -7,19 +7,19 @@ import { servicesData } from '../../data/servicesData.js';
 export default function HealthcareServicesGrid({ onBookAppointment }) {
   return (
     <section className="bg-[#F9FAFC] py-16 lg:py-24 border-b border-gray-100 relative overflow-hidden">
-      
+
       {/* Background Subtle Dot Pattern */}
-      <div 
+      <div
         className="absolute top-8 right-0 w-80 sm:w-96 h-64 pointer-events-none opacity-20 bg-repeat -z-10"
         style={{ backgroundImage: "url('/images/about/pattan.png')" }}
       />
 
       {/* Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-          <h2 
+          <h2
             className="text-3xl sm:text-4xl font-bold text-[#222B40] tracking-tight"
             style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
           >

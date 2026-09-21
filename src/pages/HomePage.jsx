@@ -3,6 +3,7 @@ import { QuickContactBar } from '../components/layout/index.js';
 import { 
   HeroBanner, 
   WhyChooseDrSakshi, 
+  QualificationsSection,
   TreatmentsShowcase, 
   HealthcareServicesGrid 
 } from '../components/home/index.js';
@@ -30,7 +31,10 @@ export default function HomePage({ onBookAppointment }) {
         className="pt-6 sm:pt-8 lg:pt-10 pb-16 lg:pb-24"
       />
 
-      {/* 3. Why Choose Dr. Sakshi (4-Card Feature Grid) */}
+      {/* 3. Academic Qualifications & Clinical Foundation */}
+      <QualificationsSection onBookAppointment={onBookAppointment} />
+
+      {/* 4. Why Choose Dr. Sakshi (4-Card Feature Grid) */}
       <WhyChooseDrSakshi />
 
       {/* 4. Treatments Showcase (Interactive Tabs) */}
