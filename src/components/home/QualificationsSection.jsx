@@ -2,8 +2,9 @@ import React from 'react';
 
 /**
  * QualificationsSection Component
- * Displays Dr. Sakshi Naik's academic foundation, medical degrees, and surgical fellowships
- * alongside a modern portrait of the doctor with theme badges.
+ * Displays Dr. Sakshi Naik's qualifications in an unboxed, alternating 2-sided layout
+ * (Degree on Left & Details on Right, then Details on Left & Degree on Right, vice-versa)
+ * merged directly into the #F9FAFC section canvas.
  */
 export default function QualificationsSection({ onBookAppointment, className = '' }) {
   const qualificationsList = [
@@ -11,26 +12,36 @@ export default function QualificationsSection({ onBookAppointment, className = '
       id: '01',
       title: 'MBBS',
       subtitle: 'Bachelor of Medicine, Bachelor of Surgery',
+      desc: 'Rigorous medical education establishing a comprehensive diagnostic and clinical care foundation.',
+      side: 'left', // Degree on Left, Desc on Right
     },
     {
       id: '02',
       title: 'MS — Obstetrics & Gynaecology',
-      subtitle: 'Master of Surgery in Comprehensive Maternity & Women’s Health',
+      subtitle: 'Master of Surgery in Maternity & Women’s Health',
+      desc: 'Specialized postgraduate surgical expertise across complex deliveries, maternal health, and pelvic surgery.',
+      side: 'right', // Desc on Left, Degree on Right
     },
     {
       id: '03',
       title: 'DNB — Obstetrics & Gynaecology',
-      subtitle: 'Diplomate of National Board (National Board of Examinations)',
+      subtitle: 'Diplomate of National Board (NBE)',
+      desc: 'National Board certified standard of excellence in clinical governance, high-risk pregnancy, and patient safety.',
+      side: 'left', // Degree on Left, Desc on Right
     },
     {
       id: '04',
       title: 'Fellowship in Minimal Access Surgery (FMAS)',
-      subtitle: 'Advanced Laparoscopic & Hysteroscopic Operative Procedures',
+      subtitle: 'Advanced Laparoscopic & Hysteroscopic Procedures',
+      desc: 'State-of-the-art keyhole surgical fellowship offering precise operative treatment with minimal pain and rapid recovery.',
+      side: 'right', // Desc on Left, Degree on Right
     },
     {
       id: '05',
       title: 'Fellowship in Assisted Reproductive Techniques (ART)',
-      subtitle: 'Specialized Protocols in Infertility Management, IUI & IVF / ICSI',
+      subtitle: 'Advanced Protocols in Infertility & Assisted Conception',
+      desc: 'Fellowship-trained reproductive specialist delivering individualized IVF, ICSI, IUI, and personalized fertility solutions.',
+      side: 'left', // Degree on Left, Desc on Right
     },
   ];
 
@@ -40,10 +51,10 @@ export default function QualificationsSection({ onBookAppointment, className = '
       className={`bg-[#F9FAFC] border-b border-gray-100 relative overflow-hidden py-16 lg:py-24 ${className}`}
       style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Eyebrow & Headline Row - Centered 2 Lines Simple Wording */}
-        <div className="mb-12 lg:mb-16 text-center">
+        {/* Section Header - Centered 2 Lines */}
+        <div className="mb-14 sm:mb-20 text-center">
           <div className="max-w-3xl mx-auto text-center">
             <span 
               className="block text-[#0B5DA7] font-bold text-xs sm:text-sm tracking-widest uppercase mb-2"
@@ -60,116 +71,115 @@ export default function QualificationsSection({ onBookAppointment, className = '
           </div>
         </div>
 
-        {/* 2-Column Responsive Layout: Left = Doctor Portrait (Full Height), Right = Qualifications Card */}
-        <div className="flex flex-col lg:flex-row items-stretch justify-between gap-12 lg:gap-16">
+        {/* 2-Sided Alternating Unboxed Layout with Center Connecting Line */}
+        <div className="relative">
           
-          {/* Left Column (~46% Width) - Seamless Doctor Portrait (No Background Box, Merges Directly with Section) */}
-          <div className="w-full lg:w-[46%] relative max-w-lg mx-auto lg:max-w-none flex flex-col justify-end">
-            {/* Seamless Doctor Portrait without background - merges with #F9FAFC */}
-            <div className="relative w-full h-full min-h-[460px] sm:min-h-[520px] lg:min-h-0 flex items-end justify-center">
-              <img
-                src="/images/about/dr-sakshi-no-bg.png"
-                alt="Dr. Sakshi Naik - Consultant Obstetrician, Gynaecologist & Fertility Specialist"
-                className="w-auto h-full max-h-[520px] sm:max-h-[560px] lg:max-h-[620px] object-contain object-bottom select-none drop-shadow-sm"
-                loading="lazy"
-              />
-            </div>
+          {/* Central Connecting Line (Desktop: Center, Mobile: Left Aligned) */}
+          <div className="absolute left-6 md:left-1/2 top-4 bottom-4 -translate-x-1/2 w-0.5 bg-gradient-to-b from-[#0B5DA7] via-[#E94E9A] to-[#0B5DA7]/60 pointer-events-none" />
 
-            {/* Floating Specialty / Doctor Credential Text */}
-            <div 
-              className="absolute bottom-2 sm:bottom-4 left-0 sm:left-2 flex items-center gap-3.5 max-w-xs z-10 animate-in fade-in"
-            >
-              <div className="w-10 h-10 rounded-full bg-[#E94E9A]/15 flex items-center justify-center shrink-0">
-                <img
-                  src="/images/icons/medical-symbol.png"
-                  alt="Medical Symbol"
-                  className="w-6 h-6 object-contain"
-                />
-              </div>
+          {/* Rows List */}
+          <div className="space-y-12 sm:space-y-16">
+            {qualificationsList.map((item, index) => {
+              const isDegreeLeft = item.side === 'left';
 
-              <div className="text-left">
-                <h3 className="text-base sm:text-lg font-bold text-[#222B40] tracking-tight leading-tight mb-0.5">
-                  Dr. Sakshi Naik
-                </h3>
-                <span className="block text-[10.5px] font-bold text-[#E94E9A] uppercase tracking-wider leading-none mb-1">
-                  Fellowship Trained Specialist
-                </span>
-                <p className="text-xs text-[#0B5DA7] font-semibold leading-tight">
-                  Obstetrics, Gynaecology &amp; Reproductive Surgery
-                </p>
-              </div>
-            </div>
-          </div>
+              return (
+                <div 
+                  key={item.id}
+                  className="relative flex flex-col md:flex-row items-start md:items-center w-full group"
+                >
+                  
+                  {/* LEFT COLUMN (Desktop ~50%) */}
+                  <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-14 md:text-right relative">
+                    {/* Horizontal Connector Line: Left to Center Node (Desktop) */}
+                    <div className="hidden md:flex items-center absolute right-0 top-1/2 -translate-y-1/2 w-12 pointer-events-none">
+                      <div className={`w-full h-0.5 ${isDegreeLeft ? 'bg-gradient-to-r from-transparent to-[#0B5DA7]' : 'bg-gradient-to-r from-transparent to-slate-300'}`} />
+                      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${isDegreeLeft ? 'bg-[#0B5DA7]' : 'bg-slate-400'}`} />
+                    </div>
 
-          {/* Right Column (~54% Width) - Qualifications List (Unboxed, Merges with Section Background) */}
-          <div className="w-full lg:w-[54%] text-left flex flex-col">
-            <div className="relative h-full flex flex-col justify-between py-2 sm:py-4">
-              
-              <div>
-                {/* Card Header */}
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#0B5DA7]">
-                    Academic Foundation
-                  </span>
-                </div>
-
-                <h3 className="text-2xl sm:text-[26px] font-bold text-[#222B40] tracking-tight mb-4">
-                  Qualifications &amp; Certifications
-                </h3>
-
-                <div className="w-full h-px bg-slate-200/80 mb-6" />
-
-                {/* Numbered Qualifications List */}
-                <div className="space-y-4">
-                  {qualificationsList.map((item) => (
-                    <div 
-                      key={item.id}
-                      className="flex items-start gap-4 pb-4 border-b border-slate-200/70 last:border-0 last:pb-0 group transition-all duration-150"
-                    >
-                      {/* Number Badge */}
-                      <div className="w-8 h-8 rounded-full bg-white group-hover:bg-[#eaf5fc] border border-slate-200 group-hover:border-[#0B5DA7]/30 text-slate-700 group-hover:text-[#0B5DA7] font-bold text-xs flex items-center justify-center shrink-0 transition-colors mt-0.5 shadow-2xs">
-                        {item.id}
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <h4 className="text-sm sm:text-[15.5px] font-bold text-[#222B40] group-hover:text-[#0B5DA7] transition-colors leading-snug">
-                            {item.title}
-                          </h4>
-                          {item.highlight && (
-                            <span className="text-[11px] font-semibold text-[#E94E9A] bg-[#fdf2f7] px-2.5 py-0.5 rounded-full whitespace-nowrap border border-[#E94E9A]/10">
-                              {item.highlight}
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-slate-600 font-normal leading-relaxed mt-1">
+                    {isDegreeLeft ? (
+                      /* Degree Title on Left */
+                      <div>
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#222B40] group-hover:text-[#0B5DA7] transition-colors leading-tight">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs sm:text-[13.5px] text-[#0B5DA7] font-semibold mt-1">
                           {item.subtitle}
                         </p>
                       </div>
+                    ) : (
+                      /* Description on Left (When Degree is on Right) */
+                      <div className="hidden md:block">
+                        <p className="text-sm sm:text-[14.5px] text-slate-600 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CENTER CONNECTING NODE / NUMBER BADGE */}
+                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-1 md:top-1/2 md:-translate-y-1/2 z-10">
+                    <div 
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F9FAFC] border-2 ${index % 2 === 0 ? 'border-[#0B5DA7] text-[#0B5DA7]' : 'border-[#E94E9A] text-[#E94E9A]'} flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:shadow-md`}
+                    >
+                      {item.id}
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
 
-              {/* Bottom Action CTA */}
-              {onBookAppointment && (
-                <div className="mt-8 pt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
-                  <button
-                    type="button"
-                    onClick={onBookAppointment}
-                    className="bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] tracking-wider uppercase px-7 py-3.5 rounded-sm shadow-sm transition-all duration-200 hover:shadow hover:scale-[1.02] active:scale-98 flex items-center gap-2 cursor-pointer"
-                  >
-                    <span>BOOK A CONSULTATION</span>
-                    <span className="text-base leading-none font-black">&raquo;</span>
-                  </button>
-                </div>
-              )}
+                  {/* RIGHT COLUMN (Desktop ~50%) */}
+                  <div className="w-full md:w-1/2 pl-16 md:pl-14 md:text-left mt-2 md:mt-0 relative">
+                    {/* Horizontal Connector Line: Center Node to Right (Desktop) */}
+                    <div className="hidden md:flex items-center absolute left-0 top-1/2 -translate-y-1/2 w-12 pointer-events-none">
+                      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${!isDegreeLeft ? 'bg-[#E94E9A]' : 'bg-slate-400'}`} />
+                      <div className={`w-full h-0.5 ${!isDegreeLeft ? 'bg-gradient-to-r from-[#E94E9A] to-transparent' : 'bg-gradient-to-r from-slate-300 to-transparent'}`} />
+                    </div>
 
-            </div>
+                    {/* Mobile Horizontal Connector Arm from Left Vertical Line */}
+                    <div className="block md:hidden absolute left-6 top-5 w-7 h-0.5 bg-gradient-to-r from-[#0B5DA7] to-slate-300 pointer-events-none" />
+
+                    {isDegreeLeft ? (
+                      /* Description on Right (When Degree is on Left) */
+                      <div>
+                        <p className="text-sm sm:text-[14.5px] text-slate-600 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
+                    ) : (
+                      /* Degree Title on Right */
+                      <div>
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#222B40] group-hover:text-[#E94E9A] transition-colors leading-tight">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs sm:text-[13.5px] text-[#E94E9A] font-semibold mt-1">
+                          {item.subtitle}
+                        </p>
+                        {/* On mobile, also show description below title */}
+                        <p className="block md:hidden text-sm text-slate-600 leading-relaxed font-normal mt-2">
+                          {item.desc}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+
+                </div>
+              );
+            })}
           </div>
 
         </div>
+
+        {/* Bottom Consultation Action Button */}
+        {onBookAppointment && (
+          <div className="mt-16 sm:mt-20 text-center">
+            <button
+              type="button"
+              onClick={onBookAppointment}
+              className="inline-flex items-center gap-2 bg-[#0B5DA7] hover:bg-[#094b87] text-white font-bold text-xs sm:text-[13px] tracking-wider uppercase px-8 py-3.5 rounded-sm shadow-sm transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-98 cursor-pointer"
+            >
+              <span>BOOK A CONSULTATION</span>
+              <span className="text-base leading-none font-black">&raquo;</span>
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
