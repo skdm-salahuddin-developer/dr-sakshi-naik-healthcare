@@ -2,9 +2,8 @@ import React from 'react';
 
 /**
  * QualificationsSection Component
- * Displays Dr. Sakshi Naik's qualifications in an unboxed, alternating 2-sided layout
- * (Degree on Left & Details on Right, then Details on Left & Degree on Right, vice-versa)
- * merged directly into the #F9FAFC section canvas.
+ * Displays Dr. Sakshi Naik's qualifications in an alternating Left-Right layout
+ * with a continuous central vertical line and connector arms to each milestone (01 to 05).
  */
 export default function QualificationsSection({ onBookAppointment, className = '' }) {
   const qualificationsList = [
@@ -12,43 +11,48 @@ export default function QualificationsSection({ onBookAppointment, className = '
       id: '01',
       title: 'MBBS',
       subtitle: 'Bachelor of Medicine, Bachelor of Surgery',
-      desc: 'Rigorous medical education establishing a comprehensive diagnostic and clinical care foundation.',
-      side: 'left', // Degree on Left, Desc on Right
+      desc: 'Foundational medical training and clinical care excellence.',
+      side: 'left', // Title on Left, Desc on Right
+      accentColor: '#0B5DA7',
     },
     {
       id: '02',
       title: 'MS — Obstetrics & Gynaecology',
-      subtitle: 'Master of Surgery in Maternity & Women’s Health',
-      desc: 'Specialized postgraduate surgical expertise across complex deliveries, maternal health, and pelvic surgery.',
-      side: 'right', // Desc on Left, Degree on Right
+      subtitle: 'Master of Surgery in Women’s Health',
+      desc: 'Advanced surgical expertise in maternity, childbirth, and pelvic care.',
+      side: 'right', // Desc on Left, Title on Right
+      accentColor: '#E94E9A',
     },
     {
       id: '03',
       title: 'DNB — Obstetrics & Gynaecology',
-      subtitle: 'Diplomate of National Board (NBE)',
-      desc: 'National Board certified standard of excellence in clinical governance, high-risk pregnancy, and patient safety.',
-      side: 'left', // Degree on Left, Desc on Right
+      subtitle: 'Diplomate of National Board',
+      desc: 'National Board certification in high-risk pregnancy and patient safety.',
+      side: 'left', // Title on Left, Desc on Right
+      accentColor: '#0B5DA7',
     },
     {
       id: '04',
       title: 'Fellowship in Minimal Access Surgery (FMAS)',
-      subtitle: 'Advanced Laparoscopic & Hysteroscopic Procedures',
-      desc: 'State-of-the-art keyhole surgical fellowship offering precise operative treatment with minimal pain and rapid recovery.',
-      side: 'right', // Desc on Left, Degree on Right
+      subtitle: 'Advanced Keyhole & Laparoscopic Surgery',
+      desc: 'Precision minimally invasive surgery for faster, pain-free recovery.',
+      side: 'right', // Desc on Left, Title on Right
+      accentColor: '#E94E9A',
     },
     {
       id: '05',
       title: 'Fellowship in Assisted Reproductive Techniques (ART)',
-      subtitle: 'Advanced Protocols in Infertility & Assisted Conception',
-      desc: 'Fellowship-trained reproductive specialist delivering individualized IVF, ICSI, IUI, and personalized fertility solutions.',
-      side: 'left', // Degree on Left, Desc on Right
+      subtitle: 'Specialized Fertility & IVF Protocols',
+      desc: 'Expert care in IVF, IUI, ICSI, and personalized fertility treatments.',
+      side: 'left', // Title on Left, Desc on Right
+      accentColor: '#0B5DA7',
     },
   ];
 
   return (
     <section 
       id="qualifications"
-      className={`bg-[#F9FAFC] border-b border-gray-100 relative overflow-hidden py-16 lg:py-24 ${className}`}
+      className={`bg-white relative overflow-hidden py-16 sm:py-20 lg:py-24 ${className}`}
       style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,103 +61,103 @@ export default function QualificationsSection({ onBookAppointment, className = '
         <div className="mb-14 sm:mb-20 text-center">
           <div className="max-w-3xl mx-auto text-center">
             <span 
-              className="block text-[#0B5DA7] font-bold text-xs sm:text-sm tracking-widest uppercase mb-2"
+              className="block text-[#0B5DA7] font-bold text-xs sm:text-[13px] tracking-widest uppercase mb-2.5"
             >
-              Qualifications &amp; Training
+              QUALIFICATIONS &amp; TRAINING
             </span>
             <h2 
-              className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#222B40] leading-tight tracking-tight"
+              className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#222B40] leading-tight tracking-tight"
             >
               Expert Care for{' '}
               <span className="text-[#E94E9A]">Women’s &amp; Fertility Health</span>
             </h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-[#0B5DA7] to-[#E94E9A] mt-4 rounded-full mx-auto" />
+            <div className="w-14 h-1 bg-gradient-to-r from-[#0B5DA7] to-[#E94E9A] mt-3.5 rounded-full mx-auto" />
           </div>
         </div>
 
-        {/* 2-Sided Alternating Unboxed Layout with Center Connecting Line */}
-        <div className="relative">
+        {/* Symmetrically Centered Alternating Connected Timeline with Zero Gap */}
+        <div className="relative max-w-5xl mx-auto">
           
-          {/* Central Connecting Line (Desktop: Center, Mobile: Left Aligned) */}
-          <div className="absolute left-6 md:left-1/2 top-4 bottom-4 -translate-x-1/2 w-0.5 bg-gradient-to-b from-[#0B5DA7] via-[#E94E9A] to-[#0B5DA7]/60 pointer-events-none" />
+          {/* Continuous Central Connecting Vertical Line: Signature brand blue-to-pink gradient */}
+          <div className="absolute left-1/2 top-6 bottom-6 -translate-x-1/2 w-[2.5px] bg-gradient-to-b from-[#0B5DA7] via-[#E94E9A] via-[#0B5DA7] via-[#E94E9A] to-[#0B5DA7] shadow-[0_0_6px_rgba(11,93,167,0.15)] z-0 pointer-events-none" />
 
           {/* Rows List */}
           <div className="space-y-12 sm:space-y-16">
             {qualificationsList.map((item, index) => {
               const isDegreeLeft = item.side === 'left';
+              const isBlue = index % 2 === 0;
 
               return (
                 <div 
                   key={item.id}
-                  className="relative flex flex-col md:flex-row items-start md:items-center w-full group"
+                  className="flex items-center justify-between w-full relative group transition-transform duration-300 hover:-translate-y-1"
                 >
                   
-                  {/* LEFT COLUMN (Desktop ~50%) */}
-                  <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-14 md:text-right relative">
-                    {/* Horizontal Connector Line: Left to Center Node (Desktop) */}
-                    <div className="hidden md:flex items-center absolute right-0 top-1/2 -translate-y-1/2 w-12 pointer-events-none">
-                      <div className={`w-full h-0.5 ${isDegreeLeft ? 'bg-gradient-to-r from-transparent to-[#0B5DA7]' : 'bg-gradient-to-r from-transparent to-slate-300'}`} />
-                      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${isDegreeLeft ? 'bg-[#0B5DA7]' : 'bg-slate-400'}`} />
-                    </div>
-
+                  {/* LEFT COLUMN (Exactly 50% - 24px) */}
+                  <div className="w-[calc(50%-24px)] flex items-center justify-end">
                     {isDegreeLeft ? (
-                      /* Degree Title on Left */
-                      <div>
-                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#222B40] group-hover:text-[#0B5DA7] transition-colors leading-tight">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs sm:text-[13.5px] text-[#0B5DA7] font-semibold mt-1">
-                          {item.subtitle}
-                        </p>
+                      /* Degree Title on Left + Theme Gradient Line touching Circle */
+                      <div className="flex items-center justify-end w-full">
+                        <div className="text-right">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#222B40] group-hover:text-[#0B5DA7] transition-colors leading-tight">
+                            {item.title}
+                          </h3>
+                          <p className="text-xs sm:text-[13px] text-[#0B5DA7] font-semibold mt-1 tracking-wide">
+                            {item.subtitle}
+                          </p>
+                        </div>
+                        {/* Theme Blue-to-Pink horizontal connector arm */}
+                        <div className="flex items-center shrink-0 ml-3 sm:ml-4">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#0B5DA7] -mr-0.5 z-10 hidden sm:block" />
+                          <div className="w-8 sm:w-12 md:w-16 h-[2.5px] bg-gradient-to-r from-[#0B5DA7] to-[#0B5DA7] transition-all duration-300 group-hover:h-[3px] group-hover:shadow-[0_0_10px_rgba(11,93,167,0.6)]" />
+                        </div>
                       </div>
                     ) : (
-                      /* Description on Left (When Degree is on Right) */
-                      <div className="hidden md:block">
-                        <p className="text-sm sm:text-[14.5px] text-slate-600 leading-relaxed font-normal">
+                      /* Description on Left */
+                      <div className="text-right max-w-md pr-4 sm:pr-6">
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal group-hover:text-slate-800 transition-colors">
                           {item.desc}
                         </p>
                       </div>
                     )}
                   </div>
 
-                  {/* CENTER CONNECTING NODE / NUMBER BADGE */}
-                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-1 md:top-1/2 md:-translate-y-1/2 z-10">
+                  {/* CENTER CIRCLE NODE (Exactly 48px width in middle) */}
+                  <div className="w-12 h-12 flex items-center justify-center relative z-10 shrink-0">
                     <div 
-                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F9FAFC] border-2 ${index % 2 === 0 ? 'border-[#0B5DA7] text-[#0B5DA7]' : 'border-[#E94E9A] text-[#E94E9A]'} flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-white group-hover:shadow-md`}
+                      className={`w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-white border-2 ${
+                        isBlue 
+                          ? 'border-[#0B5DA7] text-[#0B5DA7] group-hover:bg-[#0B5DA7] group-hover:text-white group-hover:ring-4 group-hover:ring-[#0B5DA7]/20' 
+                          : 'border-[#E94E9A] text-[#E94E9A] group-hover:bg-[#E94E9A] group-hover:text-white group-hover:ring-4 group-hover:ring-[#E94E9A]/20'
+                      } flex items-center justify-center font-bold text-xs sm:text-sm shadow-xs transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg cursor-default select-none`}
                     >
                       {item.id}
                     </div>
                   </div>
 
-                  {/* RIGHT COLUMN (Desktop ~50%) */}
-                  <div className="w-full md:w-1/2 pl-16 md:pl-14 md:text-left mt-2 md:mt-0 relative">
-                    {/* Horizontal Connector Line: Center Node to Right (Desktop) */}
-                    <div className="hidden md:flex items-center absolute left-0 top-1/2 -translate-y-1/2 w-12 pointer-events-none">
-                      <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${!isDegreeLeft ? 'bg-[#E94E9A]' : 'bg-slate-400'}`} />
-                      <div className={`w-full h-0.5 ${!isDegreeLeft ? 'bg-gradient-to-r from-[#E94E9A] to-transparent' : 'bg-gradient-to-r from-slate-300 to-transparent'}`} />
-                    </div>
-
-                    {/* Mobile Horizontal Connector Arm from Left Vertical Line */}
-                    <div className="block md:hidden absolute left-6 top-5 w-7 h-0.5 bg-gradient-to-r from-[#0B5DA7] to-slate-300 pointer-events-none" />
-
-                    {isDegreeLeft ? (
-                      /* Description on Right (When Degree is on Left) */
-                      <div>
-                        <p className="text-sm sm:text-[14.5px] text-slate-600 leading-relaxed font-normal">
-                          {item.desc}
-                        </p>
+                  {/* RIGHT COLUMN (Exactly 50% - 24px) */}
+                  <div className="w-[calc(50%-24px)] flex items-center justify-start">
+                    {!isDegreeLeft ? (
+                      /* Theme Pink Line touching Circle on left + Degree Title on Right */
+                      <div className="flex items-center justify-start w-full">
+                        {/* Theme Pink horizontal connector arm */}
+                        <div className="flex items-center shrink-0 mr-3 sm:mr-4">
+                          <div className="w-8 sm:w-12 md:w-16 h-[2.5px] bg-gradient-to-r from-[#E94E9A] to-[#E94E9A] transition-all duration-300 group-hover:h-[3px] group-hover:shadow-[0_0_10px_rgba(233,78,154,0.6)]" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#E94E9A] -ml-0.5 z-10 hidden sm:block" />
+                        </div>
+                        <div className="text-left">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#222B40] group-hover:text-[#E94E9A] transition-colors leading-tight">
+                            {item.title}
+                          </h3>
+                          <p className="text-xs sm:text-[13px] text-[#E94E9A] font-semibold mt-1 tracking-wide">
+                            {item.subtitle}
+                          </p>
+                        </div>
                       </div>
                     ) : (
-                      /* Degree Title on Right */
-                      <div>
-                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#222B40] group-hover:text-[#E94E9A] transition-colors leading-tight">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs sm:text-[13.5px] text-[#E94E9A] font-semibold mt-1">
-                          {item.subtitle}
-                        </p>
-                        {/* On mobile, also show description below title */}
-                        <p className="block md:hidden text-sm text-slate-600 leading-relaxed font-normal mt-2">
+                      /* Description on Right */
+                      <div className="text-left max-w-md pl-4 sm:pl-6">
+                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal group-hover:text-slate-800 transition-colors">
                           {item.desc}
                         </p>
                       </div>

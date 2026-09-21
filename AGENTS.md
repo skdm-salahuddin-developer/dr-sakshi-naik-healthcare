@@ -203,8 +203,33 @@ src/
 
 ---
 
-### 8. Operational Behavior Rules
+### 8. Qualifications & Training Showcase Standards (`QualificationsSection.jsx`)
+- **Alternating Left-Right Connected Vertical Timeline**:
+  - **Node 01 (MBBS)**: Title & Subtitle on Left | Central Number Badge `01` | Clinical Description on Right
+  - **Node 02 (MS - OB-GYN)**: Clinical Description on Left | Central Number Badge `02` | Title & Subtitle on Right
+  - **Node 03 (DNB - OB-GYN)**: Title & Subtitle on Left | Central Number Badge `03` | Clinical Description on Right
+  - **Node 04 (FMAS)**: Clinical Description on Left | Central Number Badge `04` | Title & Subtitle on Right
+  - **Node 05 (ART Fellowship)**: Title & Subtitle on Left | Central Number Badge `05` | Clinical Description on Right
+- **Visual Design & Structure**:
+  - Continuous vertical gradient connector line (`bg-gradient-to-b from-[#0B5DA7] via-[#E94E9A] to-[#0B5DA7]`) down the center.
+  - Horizontal connector lines with accent dots linking title/description to each circular milestone badge.
+  - **Unboxed Presentation**: Clean typography seamlessly integrated into the soft `#F9FAFC` canvas without card boxes or frames.
+  - **No Doctor Image**: Pure, structured timeline without doctor portraits or distracting card graphics.
+  - **Header**: Centered 2-line layout (`Qualifications & Training` eyebrow + `Expert Care for Women’s & Fertility Health` headline with `#E94E9A` highlight) and brand divider.
+  - **Action Button**: Centered bottom CTA `BOOK A CONSULTATION »` (`#0B5DA7` button).
+
+---
+
+### 9. Agency Credit & Footer Standards
+- In `Footer.jsx`, always maintain the agency credit: `"Designed & Developed by Shree Krishna Digital Marketing"` linking to `https://shreekrishnadigitalmarketing.com`.
+- Maintain the original 3-tier footer structure, emergency numbers, and interactive Google Map.
+
+---
+
+### 10. Operational Behavior Rules
 - **Autonomy**: Execute code changes, installations, and verifications directly.
 - **Section & Layout Preservation**: Never remove or collapse sections unless requested.
-- **Footer Untouched**: Always maintain the existing `Footer.jsx` design unchanged.
+- **Qualifications Timeline Rule**: Always preserve the approved alternating left-right vertical timeline layout for Qualifications & Training.
+- **Footer Integrity**: Always maintain the existing `Footer.jsx` design with `"Shree Krishna Digital Marketing"` credit.
 - **Theme Integrity**: Use Royal Blue `#0B5DA7` and Maternity Pink `#E94E9A` across headers, buttons, cards, and highlights.
+

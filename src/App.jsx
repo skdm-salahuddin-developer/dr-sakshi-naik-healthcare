@@ -112,85 +112,88 @@ export default function App() {
     scrollToTop();
   };
 
-  // Scroll-triggered smooth and soft directional arrival observer
+  // Scroll-triggered smooth and visible directional edge reveal observer
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-arrived', 'section-arrived');
-            // Trigger internal directional children
+            entry.target.classList.add('is-revealed', 'is-arrived', 'section-arrived');
+            // Trigger all nested directional elements
             const children = entry.target.querySelectorAll(
-              '.arrive-heading-right, .arrive-image-left, .arrive-content-bottom'
+              '.reveal-left, .reveal-right, .reveal-up, .reveal-scale, .reveal-fade, .arrive-heading-right, .arrive-image-left, .arrive-content-bottom'
             );
-            children.forEach((child) => child.classList.add('is-arrived'));
+            children.forEach((child) => child.classList.add('is-revealed', 'is-arrived'));
             observer.unobserve(entry.target);
           }
         });
       },
       {
         root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.06,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.08,
       }
     );
 
     const timer = setTimeout(() => {
       const sections = document.querySelectorAll('section');
-      sections.forEach((sec) => {
+      sections.forEach((sec, sIdx) => {
         sec.classList.add('section-arrive');
 
-        // 1. Headings coming softly from right side
+        // 1. Section Headings - Alternate coming from Left & Right for rich visual dynamics
         const headings = sec.querySelectorAll('h1, h2, h3');
-        headings.forEach((h) => {
-          h.classList.add('arrive-heading-right');
-        });
-
-        // 2. Main images coming softly from left side
-        const images = sec.querySelectorAll(
-          'img.object-cover, img.rounded-2xl, img.rounded-xl, .image-column img, iframe'
-        );
-        images.forEach((img) => {
-          // Avoid touching small icons
-          if (
-            img.classList.contains('w-4') ||
-            img.classList.contains('w-5') ||
-            img.classList.contains('w-6') ||
-            img.classList.contains('w-7') ||
-            img.classList.contains('w-8') ||
-            img.classList.contains('w-9') ||
-            img.classList.contains('w-10') ||
-            img.classList.contains('w-12')
-          ) {
-            return;
+        headings.forEach((h, hIdx) => {
+          if (!h.classList.contains('reveal-left') && !h.classList.contains('reveal-right')) {
+            if ((sIdx + hIdx) % 2 === 0) {
+              h.classList.add('reveal-left');
+            } else {
+              h.classList.add('reveal-right');
+            }
           }
-          img.classList.add('arrive-image-left');
         });
 
-        // 3. Grid cards, forms, and descriptive blocks coming softly from bottom
-        const bottomItems = sec.querySelectorAll(
-          '.grid > div, .grid > article, form'
-        );
-        bottomItems.forEach((item, idx) => {
-          item.classList.add('arrive-content-bottom');
-          const delayClass = `arrive-delay-${Math.min(((idx % 4) + 1) * 100, 400)}`;
-          item.classList.add(delayClass);
+        // 2. 2-Column Split Sections: Left column from left edge, Right column from right edge
+        const splitCols = sec.querySelectorAll('.flex-col.lg\\:flex-row > div, .flex-col.md\\:flex-row > div');
+        if (splitCols.length >= 2) {
+          splitCols.forEach((col, cIdx) => {
+            if (!col.classList.contains('reveal-left') && !col.classList.contains('reveal-right')) {
+              if (cIdx % 2 === 0) {
+                col.classList.add('reveal-left');
+              } else {
+                col.classList.add('reveal-right', 'reveal-delay-1');
+              }
+            }
+          });
+        }
+
+        // 3. Grid Cards - Alternate entering from Left and Right with stagger delays
+        const gridItems = sec.querySelectorAll('.grid > div, .grid > article, form');
+        gridItems.forEach((item, gIdx) => {
+          if (!item.classList.contains('reveal-left') && !item.classList.contains('reveal-right') && !item.classList.contains('reveal-up')) {
+            if (gIdx % 2 === 0) {
+              item.classList.add('reveal-left');
+            } else {
+              item.classList.add('reveal-right');
+            }
+            const delayClass = `reveal-delay-${Math.min((gIdx % 4) + 1, 4)}`;
+            item.classList.add(delayClass);
+          }
         });
 
+        // Check if already in viewport
         const rect = sec.getBoundingClientRect();
-        // If already in or near viewport upon page load (e.g. hero banner), arrive smoothly
-        if (rect.top < window.innerHeight * 0.75) {
-          sec.classList.add('is-arrived', 'section-arrived');
+        if (rect.top < window.innerHeight * 0.85) {
+          sec.classList.add('is-revealed', 'is-arrived', 'section-arrived');
           sec
             .querySelectorAll(
-              '.arrive-heading-right, .arrive-image-left, .arrive-content-bottom'
+              '.reveal-left, .reveal-right, .reveal-up, .reveal-scale, .reveal-fade, .arrive-heading-right, .arrive-image-left, .arrive-content-bottom'
             )
-            .forEach((el) => el.classList.add('is-arrived'));
+            .forEach((el) => el.classList.add('is-revealed', 'is-arrived'));
         } else {
           observer.observe(sec);
         }
       });
-    }, 60);
+    }, 80);
 
     return () => {
       clearTimeout(timer);
