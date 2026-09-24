@@ -186,7 +186,7 @@ export default function PatientTestimonialsSection() {
           <div className="w-full lg:w-[32%] flex items-end justify-center lg:justify-end self-end pt-2 lg:pt-0">
             <div className="relative max-w-xs sm:max-w-sm lg:max-w-md w-full flex justify-center lg:justify-end">
               <img
-                src="/images/testimonial/01.png"
+                src="/images/dr.sakshi.png"
                 alt="Dr. Sakshi Naik - Senior Gynecologist & Fertility Specialist"
                 className="max-h-[460px] sm:max-h-[520px] lg:max-h-[580px] w-auto object-contain select-none filter drop-shadow-sm pointer-events-none"
                 loading="lazy"

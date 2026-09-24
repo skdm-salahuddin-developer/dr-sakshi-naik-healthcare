@@ -83,33 +83,28 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
 
             <div className="relative rounded-md overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
               <img
-                src="/images/care/details/g3-tall.png"
-                alt="Doctor & Patient Care Consultation"
-                className="w-full h-[380px] sm:h-[430px] lg:h-[460px] object-cover object-center select-none"
+                src="/images/about image.jpeg"
+                alt="Dr. Sakshi Naik - Maternity & Fertility Specialist"
+                className="w-full h-[380px] sm:h-[430px] lg:h-[460px] object-cover object-top select-none"
                 loading="lazy"
               />
             </div>
 
-            {/* Floating Experience Card - Translucent Glassmorphism with Low White Opacity */}
+            {/* Floating Credential Badge - Minimal transparent pill */}
             <div 
-              className="absolute -bottom-6 sm:bottom-6 -left-3 sm:-left-7 bg-white/55 backdrop-blur-md p-4 sm:p-5 rounded-md shadow-md flex items-center gap-4 border-l-4 border-[#E94E9A] border border-white/60 max-w-xs z-10 animate-in fade-in"
+              className="absolute -bottom-4 sm:bottom-8 -left-2 sm:-left-6 backdrop-blur-sm bg-white/20 border border-white/30 px-4 py-3 rounded-xl flex items-center gap-3 z-10"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
             >
-              <div className="w-12 h-12 flex items-center justify-center shrink-0">
+              <div className="w-9 h-9 rounded-full bg-white/30 flex items-center justify-center shrink-0">
                 <img
                   src="/images/icons/medical-symbol.png"
-                  alt="Hospital Experience Icon"
-                  className="w-10 h-10 object-contain"
+                  alt="Medical Symbol"
+                  className="w-6 h-6 object-contain"
                 />
               </div>
-
               <div className="text-left">
-                <h3 className="text-2xl font-bold text-[#0B5DA7] tracking-tight leading-none mb-1">
-                  12+ <span className="text-xs font-bold text-black uppercase tracking-wide">Years of</span>
-                </h3>
-                <p className="text-xs text-black font-semibold leading-tight">
-                  Excellence in Women's Healthcare
-                </p>
+                <p className="text-[11px] font-bold text-white leading-tight tracking-wide">Your Health, Our Priority</p>
+                <p className="text-[10px] text-white/80 font-medium leading-tight">Women's &amp; Maternal Health</p>
               </div>
             </div>
 

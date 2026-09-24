@@ -7,8 +7,8 @@ import React from 'react';
 export default function QualificationsExpertiseSection({ onBookAppointment, className = '' }) {
   const whyChooseCredentials = [
     {
-      title: '15+ Years Clinical Excellence',
-      detail: 'MBBS, MS (OB-GYN) with rigorous surgical fellowship training and thousands of safe deliveries.',
+      title: 'Specialist in OB-GYN Care',
+      detail: 'MBBS, MS (OB-GYN) with rigorous surgical fellowship training and extensive experience in safe deliveries.',
     },
     {
       title: 'Advanced Reproductive Medicine',
@@ -49,26 +49,17 @@ export default function QualificationsExpertiseSection({ onBookAppointment, clas
               />
             </div>
 
-            {/* Floating Experience Card - Translucent Glassmorphism with Low White Opacity */}
+            {/* Floating Credential Badge - Minimal transparent pill */}
             <div 
-              className="absolute -bottom-6 sm:bottom-6 -right-3 sm:-right-7 bg-white/55 backdrop-blur-md p-4 sm:p-5 rounded-md shadow-md flex items-center gap-4 border-l-4 border-[#0B5DA7] border border-white/60 max-w-xs z-10 animate-in fade-in"
+              className="absolute -bottom-4 sm:bottom-8 -right-2 sm:-right-6 backdrop-blur-sm bg-white/20 border border-white/30 px-4 py-3 rounded-xl flex items-center gap-3 z-10"
               style={{ fontFamily: 'Arial, Helvetica, sans-serif' }}
             >
-              <div className="w-12 h-12 flex items-center justify-center shrink-0">
-                <img
-                  src="/images/care/icon/01.png"
-                  alt="Clinical Experience Icon"
-                  className="w-10 h-10 object-contain"
-                />
+              <div className="w-8 h-8 rounded-full bg-[#0B5DA7]/80 flex items-center justify-center shrink-0">
+                <svg className="w-4 h-4 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
               </div>
-
               <div className="text-left">
-                <h3 className="text-2xl font-bold text-[#0B5DA7] tracking-tight leading-none mb-1">
-                  15+ <span className="text-xs font-bold text-black uppercase tracking-wide">Years of</span>
-                </h3>
-                <p className="text-xs text-black font-semibold leading-tight">
-                  Excellence in Surgical Care
-                </p>
+                <p className="text-[11px] font-bold text-white leading-tight tracking-wide">MBBS · MS · FMAS</p>
+                <p className="text-[10px] text-white/80 font-medium leading-tight">Qualified Specialist</p>
               </div>
             </div>
           </div>
