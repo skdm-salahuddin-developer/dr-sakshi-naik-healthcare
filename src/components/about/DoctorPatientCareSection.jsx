@@ -85,7 +85,8 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
               <img
                 src="/images/about image.jpeg"
                 alt="Dr. Sakshi Naik - Maternity & Fertility Specialist"
-                className="w-full h-[380px] sm:h-[430px] lg:h-[460px] object-cover object-top select-none"
+                className="w-full h-[380px] sm:h-[430px] lg:h-[460px] object-cover select-none"
+                style={{ objectPosition: 'center 95%' }}
                 loading="lazy"
               />
             </div>
@@ -103,8 +104,8 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
                 />
               </div>
               <div className="text-left">
-                <p className="text-[11px] font-bold text-white leading-tight tracking-wide">Your Health, Our Priority</p>
-                <p className="text-[10px] text-white/80 font-medium leading-tight">Women's &amp; Maternal Health</p>
+                <p className="text-[11px] font-bold text-white leading-tight tracking-wide">Dr. Sakshi Naik</p>
+                <p className="text-[10px] text-white/80 font-medium leading-tight">MBBS · MS (OB-GYN) · FMAS</p>
               </div>
             </div>
 
