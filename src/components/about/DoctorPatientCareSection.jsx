@@ -104,8 +104,8 @@ export default function DoctorPatientCareSection({ onBookAppointment, className 
                 />
               </div>
               <div className="text-left">
-                <p className="text-[11px] font-bold text-white leading-tight tracking-wide">Dr. Sakshi Naik</p>
-                <p className="text-[10px] text-white/80 font-medium leading-tight">MBBS · MS (OB-GYN) · FMAS</p>
+                <p className="text-[12px] font-bold text-[#222B40] leading-tight tracking-wide">Dr. Sakshi Naik</p>
+                <p className="text-[10px] text-[#222B40]/70 font-medium leading-tight">MBBS · MS (OB-GYN) · FMAS</p>
               </div>
             </div>
 

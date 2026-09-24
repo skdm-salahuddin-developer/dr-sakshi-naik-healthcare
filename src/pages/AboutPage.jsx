@@ -8,7 +8,6 @@ import {
 import { QualificationsSection } from '../components/home/index.js';
 import { 
   AppointmentBookingSection, 
-  DoctorsTeamSection, 
   PatientTestimonialsSection 
 } from '../components/shared/index.js';
 
@@ -33,8 +32,6 @@ export default function AboutPage({ onNavigateHome, onBookAppointment }) {
       {/* 6. Consultation & Appointment Booking Form (Have A Questions? Consult With Dr. Sakshi Naik) */}
       <AppointmentBookingSection onBookAppointment={onBookAppointment} />
 
-      {/* 7. Medical Doctors Team Showcase */}
-      <DoctorsTeamSection onBookAppointment={onBookAppointment} />
 
       {/* 8. Patient Stories & Testimonials Slider */}
       <PatientTestimonialsSection />
